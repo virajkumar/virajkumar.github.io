@@ -1,6 +1,6 @@
 {
   "name": "personal-website",
-  "homepage": "https://virajkumar.github.io/virajkumar-website"
+  "homepage": "https://virajkumar.github.io/virajkumar-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
