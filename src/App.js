@@ -15,9 +15,7 @@ function App() {
   const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Newpage</p>
-      </header>
+      <p>Newpage</p>
     </div>
   );
 }
