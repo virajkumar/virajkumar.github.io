@@ -7,7 +7,7 @@ import Footer from "./Footer.tsx";
 
 const Home: FC = () => {
   return (
-    <div>
+    <div id="home-container">
       <NavBar />
       <Description />
       <Resume />

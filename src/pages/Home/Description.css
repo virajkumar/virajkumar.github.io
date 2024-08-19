@@ -1,0 +1,12 @@
+#para-container {
+    width: 700px;
+    position: relative;
+    left: 50px; 
+    top: 270px;
+    text-align: left;
+}
+
+#paragraph {
+    font-size: 13;
+    color: #89a3d4;
+}

@@ -1,0 +1,13 @@
+#resume-container {
+    position: relative;
+    left: 850px;
+    top: -180px;
+    z-index: 1;
+}
+
+#resume-image {
+    background: url(Resume.png);
+    background-size: 500px;
+    width: 500px;
+    height: 620px;
+}

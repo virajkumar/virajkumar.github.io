@@ -1,12 +1,12 @@
-#account-or-login-button {
+#tutor-service-button {
     max-width: fit-content;
     padding: 10px 10px;
     font-size: 25px;
-    color: chocolate;
+    color: #89a3d4;
     display: flex;
     flex: 1;
 }
 
-#account-or-login-button:active {
+#tutor-service-button:active {
     box-shadow: 0px 0px 10px 4px rgba(221, 161, 71, 0.596);
 }
