@@ -1,12 +1,15 @@
 #para-container {
-    width: 700px;
-    position: relative;
-    left: 50px; 
-    top: 270px;
     text-align: left;
+    display: flex;
+    flex: 2;
+    width: 1440px;
+    flex-direction: row;
+    align-items: center;
 }
 
 #paragraph {
-    font-size: 13;
-    color: #89a3d4;
+    font-size: 30px;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    flex: 1;
 }

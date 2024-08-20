@@ -1,13 +1,13 @@
 #resume-container {
-    position: relative;
-    left: 850px;
-    top: -180px;
-    z-index: 1;
+    display: flex;
+    flex: 1;
+    /*padding: 80px 300px 80px 300px;*/
 }
 
 #resume-image {
+    display: flex;
+    flex: 1;
     background: url(Resume.png);
-    background-size: 500px;
-    width: 500px;
-    height: 620px;
+    background-size: 400px;
+    position: relative;
 }

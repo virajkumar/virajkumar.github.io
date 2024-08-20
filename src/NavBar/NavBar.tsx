@@ -11,7 +11,9 @@ import { useDispatch } from "react-redux";
 
 const NavBar: FC = () => {
   return (
-    <div>
+    <div id="bar-container">
+      <div id="picture"></div>
+      <div id="name"></div>
       <div id="bar">
         <div id="home" className="bar-element">
           <HomeButton />

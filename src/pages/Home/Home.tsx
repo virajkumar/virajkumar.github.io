@@ -9,9 +9,13 @@ const Home: FC = () => {
   return (
     <div id="home-container">
       <NavBar />
-      <Description />
-      <Resume />
-      <Footer />
+      <div id="description-resume-container">
+        <Description />
+        <Resume />
+      </div>
+      <div id="footer-container">
+        <Footer />
+      </div>
     </div>
   );
 };

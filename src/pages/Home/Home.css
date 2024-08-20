@@ -1,4 +1,23 @@
 #home-container {
-    width: 100%;
-    height: 100%;
+    background: url(back-image3.jpg);
+    background-size: 1440x941;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    top: 80px;
+    height: 870px;
+    width: 1440px;
+}
+
+#description-resume-container {
+    display: flex;
+    flex: 3;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+}
+
+#footer-container {
+    flex: 1
 }
