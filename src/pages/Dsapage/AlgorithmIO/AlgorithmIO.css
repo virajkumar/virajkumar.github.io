@@ -1,9 +1,10 @@
-#explainer-container {
+#algorithmio-container {
     display: flex;
     flex: 1;
     position: relative;
-    background-color: white;
-    top: -400px;
+    top: 200px;
     left: 140px;
+    color: white;
     font-size: 20px;
+    flex-direction: column;
 }

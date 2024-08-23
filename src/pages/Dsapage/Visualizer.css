@@ -1,0 +1,25 @@
+#visualizer-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#visualizer-box {
+    display: flex;
+    flex: 1;
+    width: 600px;
+    min-height: 600px;
+    position: relative;
+    left: 800px;
+    background-color: white;
+    top: -100px;
+}
+
+#label {
+    display: flex;
+    flex: 1;
+    left: 1050px;
+    color: white;
+    position: relative;
+    top: -100px;
+}

@@ -1,0 +1,8 @@
+#output-container {
+    display: flex;
+    flex: 1;
+    background-color: white;
+    color: black;
+    position: relative;
+    top: 10px;
+}

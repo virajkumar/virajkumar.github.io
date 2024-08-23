@@ -1,4 +1,9 @@
-#algorithm-menu {
+#algorithm-menu-container {
+    top: 140px;
+    left: 140px;
     display: flex;
     flex: 1;
+    position: relative;
+    font-size: 20px;
+    color: white;
 }
