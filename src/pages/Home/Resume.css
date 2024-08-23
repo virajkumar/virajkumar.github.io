@@ -7,7 +7,7 @@
 #resume-image {
     display: flex;
     flex: 1;
-    background: url(Resume.png);
-    background-size: 400px;
     position: relative;
+    width: 200px;
+    padding: 20px;
 }

@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import "./Resume.css";
 
+const resume_pic = require("./Resume.png");
+
 const Resume: FC = () => {
   return (
     <div id="resume-container">
-      <div id="resume-image"></div>
+      <img id="resume-image" src={String(resume_pic)} alt="not available" />
     </div>
   );
 };
