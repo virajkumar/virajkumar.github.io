@@ -13,6 +13,7 @@
     left: 800px;
     background-color: white;
     top: -100px;
+    flex-direction: column;
 }
 
 #label {
@@ -22,4 +23,50 @@
     color: white;
     position: relative;
     top: -100px;
+    max-width: 100px;
+}
+
+#x-axis {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: black;
+    min-width: 600px;
+    min-height: 2px;
+    max-height: 3px;
+    top: 550px;
+}
+
+#x-axis-label {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: white;
+    top: 560px;
+    left: 270px;
+    max-width: 50px;
+    max-height: 20px;
+}
+
+#y-axis {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: black;
+    min-width: 2px;
+    max-width: 3px;
+    min-height: 600px;
+    left: 520px;
+    top: -21px;
+}
+
+#y-axis-label {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: white;
+    top: -325px;
+    left: 545px;
+    max-width: 50px;
+    max-height: 50px;
 }
