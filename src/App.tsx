@@ -10,10 +10,16 @@ import Dsapage from "./pages/Dsapage/Dsapage.tsx";
 
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router";
+import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
-
+  dispatch({
+    type: DSA_ITEM_TYPE,
+    payload: {
+      name: "Insertion Sort",
+    },
+  });
   return (
     <body>
       <div className="App-header">

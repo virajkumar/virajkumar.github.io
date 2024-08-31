@@ -1,8 +1,7 @@
 export const DSA_ITEM_TYPE = "DSA_ITEM_TYPE";
 
 export interface DSAItem {
-    id: number;
-    name?: string;
+    name: string;
 }
 
 export interface DSAItemAction {

@@ -1,11 +1,40 @@
 import React, { FC } from "react";
 import "./AlgorithmMenu.css";
+import { useSelector } from "react-redux";
+import { AppState } from "../../store/AppState";
+import { useDispatch } from "react-redux";
+import { DSA_ITEM_TYPE, DSAItem } from "../../store/DSAItemReducer.ts";
 
 const AlgorithmMenu: FC = () => {
+  const dispatch = useDispatch();
+
+  dispatch({
+    type: DSA_ITEM_TYPE,
+    payload: {
+      name: "insertion-sort",
+    },
+  });
+
+  const handleChange = (event) => {
+    const newDSAItem = event.target.value;
+    //console.log("hello");
+    dispatch({
+      type: DSA_ITEM_TYPE,
+      payload: {
+        name: newDSAItem,
+      },
+    });
+  };
+
   return (
     <div id="algorithm-menu-container">
       <label htmlFor="algorithms"> Choose algorithm: </label>
-      <select name="algorithms" id="algorithms">
+      <select
+        name="algorithms"
+        id="algorithms"
+        defaultValue="insertion-sort"
+        onChange={handleChange}
+      >
         <option value="insertion-sort">Insertion Sort</option>
         <option value="merge-sort">Merge Sort</option>
         <option value="heap-sort">Heap Sort</option>
