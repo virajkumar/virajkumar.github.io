@@ -1,0 +1,7 @@
+#sorting-container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: -500px;
+    flex: 1;
+}

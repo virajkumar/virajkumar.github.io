@@ -6,7 +6,7 @@ import Sorting from "./Sorting.tsx";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
-  console.log(currDSAItem);
+  //console.log(currDSAItem);
   if (
     currDSAItem === "insertion-sort" ||
     currDSAItem === "merge-sort" ||

@@ -6,10 +6,11 @@ import { DSAItem } from "../../../store/DSAItemReducer";
 import Bars from "./Bars.tsx";
 import PlayButton from "./PlayButton.tsx";
 import RandomizeButton from "./RandomizeButton.tsx";
+import "./Sorting.css";
 
 const Sorting: FC = () => {
   return (
-    <div>
+    <div id="sorting-container">
       <Bars />
       <PlayButton />
       <RandomizeButton />

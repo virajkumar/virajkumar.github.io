@@ -1,7 +1,12 @@
 export const BAR_ORDER_TYPE = "BAR_ORDER_TYPE";
 
 export interface Bar {
-    id: number;
+    id: string,
+    width: string,
+    height: string,
+    xPos: string,
+    yPos: string,
+    position: string
 }
 
 export interface Bars {

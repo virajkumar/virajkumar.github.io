@@ -7,10 +7,14 @@ const initializeBars = (): Bars | null => {
 
     for (const x of Array(100).keys()) {
         allBars.bars?.push({
-            id: x
-        });;
+            id: x.toString(),
+            width: "5px",
+            height: `${10*x}px`,
+            xPos: `${(10*x)-1000}px`,
+            yPos: "200px",
+            position: "relative"
+        });
       }
-
     return allBars;
 }
 
