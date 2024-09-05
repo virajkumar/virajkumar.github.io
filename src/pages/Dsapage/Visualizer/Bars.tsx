@@ -3,6 +3,7 @@ import "./Visualizer.css";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../store/AppState";
 import "./Bars.css";
+import { shuffle } from "./shuffleBars.ts";
 
 const Bars: FC = () => {
   const currBars = useSelector((state: AppState) => state.reducedBars?.bars);
@@ -27,15 +28,15 @@ const Bars: FC = () => {
   if (currBars) {
     const barStyles: CSSProperties[] = [];
 
-    for (const i of Array(100).keys()) {
+    for (const i of Array(35).keys()) {
       const bs = {
         id: currBars["bars"][i].id,
         minWidth: currBars["bars"][i].width,
         maxWidth: currBars["bars"][i].width,
         minHeight: currBars["bars"][i].height,
         maxHeight: currBars["bars"][i].height,
-        left: currBars["bars"][i].xPos,
-        top: currBars["bars"][i].yPos,
+        left: currBars["bars"][i].left,
+        top: currBars["bars"][i].top,
         position: currBars["bars"][i].position,
         display: "flex",
         flex: "1",
@@ -45,6 +46,8 @@ const Bars: FC = () => {
 
       barStyles.push(bs);
     }
+
+    //shuffle(currBars["bars"]);
 
     return (
       <div id="bars-container">

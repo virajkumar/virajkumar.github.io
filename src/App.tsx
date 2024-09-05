@@ -21,18 +21,16 @@ function App() {
     },
   });
   return (
-    <body>
-      <div className="App-header">
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/dsa" element={<Dsapage />}></Route>
-          <Route path="/projects" element={<Projects />}></Route>
-          <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/open-source" element={<Opensource />}></Route>
-          <Route path="/tutor-services" element={<Tutoring />}></Route>
-        </Routes>
-      </div>
-    </body>
+    <div id="temp">
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/dsa" element={<Dsapage />}></Route>
+        <Route path="/projects" element={<Projects />}></Route>
+        <Route path="/blog" element={<Blog />}></Route>
+        <Route path="/open-source" element={<Opensource />}></Route>
+        <Route path="/tutor-services" element={<Tutoring />}></Route>
+      </Routes>
+    </div>
   );
 }
 

@@ -4,8 +4,8 @@ export interface Bar {
     id: string,
     width: string,
     height: string,
-    xPos: string,
-    yPos: string,
+    left: string,
+    top: string,
     position: string
 }
 

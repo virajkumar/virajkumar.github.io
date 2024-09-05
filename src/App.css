@@ -1,7 +1,9 @@
-.App-header {
+#root {
   display: flex;
+  background-image: url(back-image3.jpg);
 }
 
-body {
-  background-image: url(back-image3.jpg);
+#temp {
+  display: flex;
+  flex: 1;
 }

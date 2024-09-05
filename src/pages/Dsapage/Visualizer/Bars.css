@@ -1,4 +1,9 @@
 #bars-container {
+    min-width: 600px;
+    min-height: 600px; 
     display: flex;
-    flex-direction: row;
+    flex: 1;
+    justify-content: left;
+    position: relative;
+    left: -140px;
 }
