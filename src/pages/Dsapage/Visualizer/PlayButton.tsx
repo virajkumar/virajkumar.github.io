@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../store/AppState";
 
 const PlayButton: FC = () => {
-  return <div></div>;
+  return (
+    <div>
+      <button></button>
+    </div>
+  );
 };
 
 export default PlayButton;

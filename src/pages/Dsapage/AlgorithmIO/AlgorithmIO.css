@@ -7,4 +7,5 @@
     color: white;
     font-size: 20px;
     flex-direction: column;
+    max-width: calc(100vw - 140px);
 }

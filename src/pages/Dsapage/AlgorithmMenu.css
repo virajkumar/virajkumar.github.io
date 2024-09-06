@@ -6,4 +6,5 @@
     position: relative;
     font-size: 20px;
     color: white;
+    max-width: calc(100vw - 140px);
 }

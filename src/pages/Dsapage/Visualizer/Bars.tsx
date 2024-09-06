@@ -28,7 +28,7 @@ const Bars: FC = () => {
   if (currBars) {
     const barStyles: CSSProperties[] = [];
 
-    for (const i of Array(35).keys()) {
+    for (const i of Array(48).keys()) {
       const bs = {
         id: currBars["bars"][i].id,
         minWidth: currBars["bars"][i].width,
@@ -41,13 +41,17 @@ const Bars: FC = () => {
         display: "flex",
         flex: "1",
         backgroundColor: "blue",
-        justifyContent: "flex-start",
+        justifyContent: "center",
       } as React.CSSProperties;
 
       barStyles.push(bs);
     }
 
-    //shuffle(currBars["bars"]);
+    shuffle(barStyles);
+
+    for (const i of Array(48).keys()) {
+      barStyles[i].left = `${i}px`;
+    }
 
     return (
       <div id="bars-container">

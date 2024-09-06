@@ -9,6 +9,7 @@
     max-height: 650px;
     left: 800px;
     top: -100px;
+    flex-direction: column;
 }
 
 #visualizer-box {
@@ -22,7 +23,7 @@
     left: 0px;
     background-color: white;
     top: 0px;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 #label {
@@ -53,7 +54,7 @@
     position: relative;
     background: white;
     top: 560px;
-    left: -325px;
+    left: 275px;
     max-width: 50px;
     max-height: 20px;
 }
@@ -66,8 +67,8 @@
     min-width: 2px;
     max-width: 3px;
     min-height: 600px;
-    left: -300px;
-    top: 0px;
+    left: 525px;
+    top: -622px;
 }
 
 #y-axis-label {
@@ -75,8 +76,8 @@
     flex: 1;
     position: relative;
     background: white;
-    top: 280px;
-    left: -290px;
+    top: -950px;
+    left: 550px;
     max-width: 50px;
     max-height: 20px;
 }

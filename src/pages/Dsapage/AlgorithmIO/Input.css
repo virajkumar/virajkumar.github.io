@@ -2,4 +2,5 @@
     display: flex;
     flex: 1;
     color: white;
+    max-width: 515px;
 }
