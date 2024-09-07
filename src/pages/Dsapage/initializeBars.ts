@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { BAR_ORDER_TYPE, Bars, Bar } from "../../store/BarOrderReducer.ts";
 
 const initializeBars = (): Bars | null => {
-    let allBars: Bars = {bars: []};
+    let allBars: Bars = {bars: [], flagShuffle: true};
 
     for (const x of Array(48).keys()) {
         allBars.bars?.push({
@@ -12,7 +12,8 @@ const initializeBars = (): Bars | null => {
             height: `${10*x}px`,
             left: `${(1*x)}px`,
             top: `${50 + (480-(10*x))}px`,
-            position: "relative"
+            position: "relative",
+            backgroundColor: "blue"
         });
     }
     return allBars;
