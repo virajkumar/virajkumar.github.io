@@ -6,12 +6,15 @@ import Example from "./Example.tsx";
 import { AppState } from "../../../store/AppState.ts";
 import { useDispatch, useSelector } from "react-redux";
 import sortingAlgos from "./sortingAlgos.ts";
+import { TypedUseSelectorHook } from "react-redux";
+import { useRef, useEffect } from "react";
 
 const AlgorithmInterface: FC = () => {
   const currDSAItem = { ...useSelector((state: AppState) => state.dsa_item) };
   const currBars = useSelector((state: AppState) => state.reducedBars);
   const dispatch = useDispatch();
-  const handleClickPlay = (event) => {
+
+  const handleClickPlay = () => {
     sortingAlgos(currDSAItem.name, dispatch, currBars);
   };
 

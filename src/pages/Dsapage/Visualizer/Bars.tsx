@@ -54,10 +54,10 @@ const Bars: FC = () => {
     if (currBars.flagShuffle) {
       console.log("hello");
       shuffle(barStyles);
-      dispatch({
-        type: BAR_ORDER_TYPE,
-        payload: currBars,
-      });
+      // dispatch({
+      //   type: BAR_ORDER_TYPE,
+      //   payload: currBars,
+      // });
     }
 
     for (const i of Array(48).keys()) {

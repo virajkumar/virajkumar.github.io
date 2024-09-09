@@ -11,6 +11,8 @@ import Dsapage from "./pages/Dsapage/Dsapage.tsx";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router";
 import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
+import { BAR_ORDER_TYPE, Bars } from "./store/BarOrderReducer.ts";
+import initializeBars from "./pages/Dsapage/initializeBars.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +22,17 @@ function App() {
       name: "Insertion Sort",
     },
   });
+
+  const initialBars: Bars | null = initializeBars();
+
+  dispatch({
+    type: BAR_ORDER_TYPE,
+    payload: {
+      bars: initialBars?.bars,
+      flagShuffle: initialBars?.flagShuffle,
+    },
+  });
+
   return (
     <div id="temp">
       <Routes>
