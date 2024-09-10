@@ -31,22 +31,9 @@ const Bars: FC = () => {
       barStyles.push(bs);
     }
 
-    // console.log(currBars.flagShuffle);
-
-    // if (currBars.flagShuffle) {
-    //   console.log("hello");
-    //   shuffle(barStyles);
-    //   // dispatch({
-    //   //   type: BAR_ORDER_TYPE,
-    //   //   payload: currBars,
-    //   // });
-    // }
-
-    // for (const i of Array(48).keys()) {
-    //   barStyles[i].left = `${i}px`;
-    // }
-
-    console.log("check");
+    for (const i of Array(48).keys()) {
+      barStyles[i].left = `${i}px`;
+    }
 
     return (
       <div id="bars-container">

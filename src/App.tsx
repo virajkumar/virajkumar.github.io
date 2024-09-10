@@ -17,12 +17,6 @@ import initializeBars from "./pages/Dsapage/initializeBars.ts";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch({
-    type: DSA_ITEM_TYPE,
-    payload: {
-      name: "Insertion Sort",
-    },
-  });
 
   const currBars = useSelector((state: AppState) => state.reducedBars);
 
@@ -30,6 +24,13 @@ function App() {
   // console.log(10);
 
   if (!currBars) {
+    dispatch({
+      type: DSA_ITEM_TYPE,
+      payload: {
+        name: "Insertion Sort",
+      },
+    });
+
     const initialBars: Bars | null = initializeBars();
 
     dispatch({
