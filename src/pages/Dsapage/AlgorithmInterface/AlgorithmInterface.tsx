@@ -13,9 +13,13 @@ const AlgorithmInterface: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
   const currBars = useSelector((state: AppState) => state.reducedBars);
   const dispatch = useDispatch();
+  const currBarsRef = useRef(currBars);
+  useEffect(() => {
+    currBarsRef.current = currBars;
+  }, [currBars]);
 
   const handleClickPlay = () => {
-    sortingAlgos(currDSAItem, dispatch, currBars);
+    sortingAlgos(currDSAItem, dispatch, currBarsRef.current);
   };
 
   if (

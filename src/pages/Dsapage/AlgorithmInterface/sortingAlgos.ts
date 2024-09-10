@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 import { AnyAction } from "redux";
 import { Bar, Bars, BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
 
@@ -12,12 +11,11 @@ const insertionSort = async (currBars: Bars, callDispatch: (action: AnyAction) =
         currBars.bars[i].backgroundColor = "red";
         newCurrBars = { ...currBars };
 
-        setTimeout(() => {
-            callDispatch({
-                type: BAR_ORDER_TYPE,
-                payload: newCurrBars
-            });
-        }, 1000);
+        callDispatch({
+            type: BAR_ORDER_TYPE,
+            payload: newCurrBars
+        });
+
         await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(i*2);
         let j = i - 1;
@@ -26,13 +24,10 @@ const insertionSort = async (currBars: Bars, callDispatch: (action: AnyAction) =
             currBars.bars[j + 1].backgroundColor = "red";
             currBars.bars[j].backgroundColor = "blue";
             newCurrBars = { ...currBars };
-
-            setTimeout(() => {
-                callDispatch({
-                    type: BAR_ORDER_TYPE,
-                    payload: newCurrBars
-                });
-            }, 1000);
+            callDispatch({
+                type: BAR_ORDER_TYPE,
+                payload: newCurrBars
+            });
             await new Promise(resolve => setTimeout(resolve, 1000));
             j = j - 1;
         }
