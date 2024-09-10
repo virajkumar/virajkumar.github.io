@@ -5,33 +5,38 @@ const insertionSort = async (currBars: Bars, callDispatch: (action: AnyAction) =
     let i = 1;
     currBars.flagShuffle = false;
     while (i < 48) {
-        let key = currBars.bars[i];
-        console.log(i);
+        let key = { ...currBars.bars[i] };
         currBars.bars[i].backgroundColor = "red";
         setTimeout(() => {
             callDispatch({
                 type: BAR_ORDER_TYPE,
                 payload: { ...currBars }
             });
-        }, 999);
-        await new Promise(resolve => setTimeout(resolve, 1001));
-        console.log(i*2);
+        }, 100);
+        await new Promise(resolve => setTimeout(resolve, 100));
         let j = i - 1;
-        while (j > 0 && currBars.bars[j].height > key.height) {
-            currBars.bars[j + 1] = currBars.bars[j];
-            currBars.bars[j + 1].backgroundColor = "red";
-            currBars.bars[j].backgroundColor = "blue";
+        while (j >= 0 && currBars.bars[j].height > key.height) {
+            currBars.bars[j + 1] = { ...currBars.bars[j]};
+            //currBars.bars[j + 1].backgroundColor = "red";
+           // currBars.bars[j].backgroundColor = "blue";
             setTimeout(() => {
                 callDispatch({
                     type: BAR_ORDER_TYPE,
                     payload: { ...currBars }
                 });
-            }, 999);
-            await new Promise(resolve => setTimeout(resolve, 1001));
+            }, 100);
+            await new Promise(resolve => setTimeout(resolve, 100));
             j = j - 1;
         }
-        currBars.bars[j + 1] = key;
+        currBars.bars[j+1] = key;
         currBars.bars[j + 1].backgroundColor = "blue";
+        setTimeout(() => {
+            callDispatch({
+                type: BAR_ORDER_TYPE,
+                payload: { ...currBars }
+            });
+        }, 100);
+        await new Promise(resolve => setTimeout(resolve, 100));
         i += 1
     }
 }
