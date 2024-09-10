@@ -11,9 +11,9 @@ import Dsapage from "./pages/Dsapage/Dsapage.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router";
 import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
-import { BAR_ORDER_TYPE, Bars } from "./store/BarOrderReducer.ts";
-import initializeBars from "./pages/Dsapage/initializeBars.ts";
 import { AppState } from "./store/AppState.ts";
+import { Bars, BAR_ORDER_TYPE } from "./store/BarOrderReducer.ts";
+import initializeBars from "./pages/Dsapage/initializeBars.ts";
 
 function App() {
   const dispatch = useDispatch();
