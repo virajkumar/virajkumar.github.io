@@ -1,12 +1,25 @@
 import React, { FC } from "react";
 import "./Visualizer.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../../store/AppState";
 import Sorting from "./Sorting.tsx";
+import { Bars, BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
+import initializeBars from "../initializeBars.ts";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
   //console.log(currDSAItem);
+  // const initialBars: Bars | null = initializeBars();
+  // const dispatch = useDispatch();
+
+  // dispatch({
+  //   type: BAR_ORDER_TYPE,
+  //   payload: {
+  //     bars: initialBars?.bars,
+  //     flagShuffle: initialBars?.flagShuffle,
+  //   },
+  // });
+
   if (
     currDSAItem === "insertion-sort" ||
     currDSAItem === "merge-sort" ||

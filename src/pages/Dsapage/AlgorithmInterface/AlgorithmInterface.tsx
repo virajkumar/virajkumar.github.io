@@ -10,19 +10,19 @@ import { TypedUseSelectorHook } from "react-redux";
 import { useRef, useEffect } from "react";
 
 const AlgorithmInterface: FC = () => {
-  const currDSAItem = { ...useSelector((state: AppState) => state.dsa_item) };
+  const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
   const currBars = useSelector((state: AppState) => state.reducedBars);
   const dispatch = useDispatch();
 
   const handleClickPlay = () => {
-    sortingAlgos(currDSAItem.name, dispatch, currBars);
+    sortingAlgos(currDSAItem, dispatch, currBars);
   };
 
   if (
-    currDSAItem.name === "insertion-sort" ||
-    currDSAItem.name === "merge-sort" ||
-    currDSAItem.name === "heap-sort" ||
-    currDSAItem.name === "quick-sort"
+    currDSAItem === "insertion-sort" ||
+    currDSAItem === "merge-sort" ||
+    currDSAItem === "heap-sort" ||
+    currDSAItem === "quick-sort"
   ) {
     return (
       <div id="algorithm-interface-container">
@@ -32,7 +32,7 @@ const AlgorithmInterface: FC = () => {
           </div>
           <div id="reset-button">Reset</div>
         </div>
-        <div id="label">{currDSAItem.name}</div>
+        <div id="label">{currDSAItem}</div>
       </div>
     );
   } else {

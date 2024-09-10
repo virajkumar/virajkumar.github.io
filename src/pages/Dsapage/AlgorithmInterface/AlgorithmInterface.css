@@ -29,6 +29,7 @@
     min-width: 50px;
     max-height: 25px;
     background-color: blueviolet;
+    text-align: center;
 }
 
 #reset-button {

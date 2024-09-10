@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BAR_ORDER_TYPE, Bars, Bar } from "../../store/BarOrderReducer.ts";
+import { shuffle } from "./shuffleBars.ts";
 
 const initializeBars = (): Bars | null => {
     let allBars: Bars = {bars: [], flagShuffle: true};
@@ -15,6 +16,10 @@ const initializeBars = (): Bars | null => {
             position: "relative",
             backgroundColor: "blue"
         });
+    }
+    shuffle(allBars.bars)
+    for (const i of Array(48).keys()) {
+        allBars.bars[i].left = `${i}px`;
     }
     return allBars;
 }

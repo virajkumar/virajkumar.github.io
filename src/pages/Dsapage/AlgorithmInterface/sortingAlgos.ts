@@ -1,33 +1,39 @@
+/* eslint-disable no-loop-func */
 import { AnyAction } from "redux";
 import { Bar, Bars, BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
 
 const insertionSort = async (currBars: Bars, callDispatch: (action: AnyAction) => void) => {
     let i = 1;
+    let newCurrBars: Bars;
     currBars.flagShuffle = false;
     while (i < 48) {
         let key = currBars.bars[i];
         console.log(i);
         currBars.bars[i].backgroundColor = "red";
+        newCurrBars = { ...currBars };
+
         setTimeout(() => {
             callDispatch({
                 type: BAR_ORDER_TYPE,
-                payload: { ...currBars }
+                payload: newCurrBars
             });
-        }, 999);
-        await new Promise(resolve => setTimeout(resolve, 1001));
+        }, 1000);
+        await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(i*2);
         let j = i - 1;
         while (j > 0 && currBars.bars[j].height > key.height) {
             currBars.bars[j + 1] = currBars.bars[j];
             currBars.bars[j + 1].backgroundColor = "red";
             currBars.bars[j].backgroundColor = "blue";
+            newCurrBars = { ...currBars };
+
             setTimeout(() => {
                 callDispatch({
                     type: BAR_ORDER_TYPE,
-                    payload: { ...currBars }
+                    payload: newCurrBars
                 });
-            }, 999);
-            await new Promise(resolve => setTimeout(resolve, 1001));
+            }, 1000);
+            await new Promise(resolve => setTimeout(resolve, 1000));
             j = j - 1;
         }
         currBars.bars[j + 1] = key;

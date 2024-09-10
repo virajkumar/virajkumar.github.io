@@ -8,11 +8,12 @@ import Opensource from "./pages/Opensource/Opensource.tsx";
 import Tutoring from "./pages/Dsapage/Dsapage.tsx";
 import Dsapage from "./pages/Dsapage/Dsapage.tsx";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router";
 import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
 import { BAR_ORDER_TYPE, Bars } from "./store/BarOrderReducer.ts";
 import initializeBars from "./pages/Dsapage/initializeBars.ts";
+import { AppState } from "./store/AppState.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,15 +24,22 @@ function App() {
     },
   });
 
-  const initialBars: Bars | null = initializeBars();
+  const currBars = useSelector((state: AppState) => state.reducedBars);
 
-  dispatch({
-    type: BAR_ORDER_TYPE,
-    payload: {
-      bars: initialBars?.bars,
-      flagShuffle: initialBars?.flagShuffle,
-    },
-  });
+  // console.log(currBars);
+  // console.log(10);
+
+  if (!currBars) {
+    const initialBars: Bars | null = initializeBars();
+
+    dispatch({
+      type: BAR_ORDER_TYPE,
+      payload: {
+        bars: initialBars?.bars,
+        flagShuffle: initialBars?.flagShuffle,
+      },
+    });
+  }
 
   return (
     <div id="temp">
