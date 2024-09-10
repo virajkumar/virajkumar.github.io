@@ -8,9 +8,12 @@ import Opensource from "./pages/Opensource/Opensource.tsx";
 import Tutoring from "./pages/Dsapage/Dsapage.tsx";
 import Dsapage from "./pages/Dsapage/Dsapage.tsx";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router";
 import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
+import { AppState } from "./store/AppState.ts";
+import { Bars, BAR_ORDER_TYPE } from "./store/BarOrderReducer.ts";
+import initializeBars from "./pages/Dsapage/initializeBars.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +23,24 @@ function App() {
       name: "Insertion Sort",
     },
   });
+
+  const currBars = useSelector((state: AppState) => state.reducedBars);
+
+  // console.log(currBars);
+  // console.log(10);
+
+  if (!currBars) {
+    const initialBars: Bars | null = initializeBars();
+
+    dispatch({
+      type: BAR_ORDER_TYPE,
+      payload: {
+        bars: initialBars?.bars,
+        flagShuffle: initialBars?.flagShuffle,
+      },
+    });
+  }
+
   return (
     <div id="temp">
       <Routes>
