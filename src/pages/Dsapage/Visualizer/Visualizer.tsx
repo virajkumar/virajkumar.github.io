@@ -8,18 +8,6 @@ import initializeBars from "../initializeBars.ts";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
-  //console.log(currDSAItem);
-  // const initialBars: Bars | null = initializeBars();
-  // const dispatch = useDispatch();
-
-  // dispatch({
-  //   type: BAR_ORDER_TYPE,
-  //   payload: {
-  //     bars: initialBars?.bars,
-  //     flagShuffle: initialBars?.flagShuffle,
-  //   },
-  // });
-
   if (
     currDSAItem === "insertion-sort" ||
     currDSAItem === "merge-sort" ||

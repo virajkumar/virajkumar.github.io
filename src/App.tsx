@@ -14,6 +14,7 @@ import { DSA_ITEM_TYPE } from "./store/DSAItemReducer.ts";
 import { AppState } from "./store/AppState.ts";
 import { Bars, BAR_ORDER_TYPE } from "./store/BarOrderReducer.ts";
 import initializeBars from "./pages/Dsapage/initializeBars.ts";
+import { ResetFlag, RESET_FLAG_TYPE } from "./store/ResetFlagReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,13 @@ function App() {
   // console.log(10);
 
   if (!currBars) {
+    dispatch({
+      type: RESET_FLAG_TYPE,
+      payload: {
+        flag: false,
+      },
+    });
+
     dispatch({
       type: DSA_ITEM_TYPE,
       payload: {
