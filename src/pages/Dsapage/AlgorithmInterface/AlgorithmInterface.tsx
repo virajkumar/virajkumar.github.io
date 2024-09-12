@@ -1,12 +1,8 @@
 import React, { FC } from "react";
 import "./AlgorithmInterface.css";
-import Input from "./Input.tsx";
-import Output from "./Output.tsx";
-import Example from "./Example.tsx";
 import { AppState } from "../../../store/AppState.ts";
 import { useDispatch, useSelector } from "react-redux";
 import sortingAlgos from "./sortingAlgos.ts";
-import { TypedUseSelectorHook } from "react-redux";
 import { useRef, useEffect } from "react";
 import { shuffle } from "../shuffleBars.ts";
 import { BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
