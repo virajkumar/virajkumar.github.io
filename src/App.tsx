@@ -35,7 +35,7 @@ function App() {
     dispatch({
       type: DSA_ITEM_TYPE,
       payload: {
-        name: "Insertion Sort",
+        name: "insertion-sort",
       },
     });
 

@@ -17,7 +17,9 @@ const initializeBars = (): Bars | null => {
             backgroundColor: "blue"
         });
     }
+
     shuffle(allBars.bars);
+    
     for (const i of Array(48).keys()) {
         allBars.bars[i].left = `${i}px`;
     }

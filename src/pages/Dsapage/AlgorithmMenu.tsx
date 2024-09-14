@@ -8,16 +8,9 @@ import { DSA_ITEM_TYPE, DSAItem } from "../../store/DSAItemReducer.ts";
 const AlgorithmMenu: FC = () => {
   const dispatch = useDispatch();
 
-  dispatch({
-    type: DSA_ITEM_TYPE,
-    payload: {
-      name: "insertion-sort",
-    },
-  });
-
   const handleChange = (event) => {
     const newDSAItem = event.target.value;
-    //console.log("hello");
+
     dispatch({
       type: DSA_ITEM_TYPE,
       payload: {

@@ -3,8 +3,6 @@ import "./Visualizer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../store/AppState";
 import "./Bars.css";
-import { shuffle } from "../shuffleBars.ts";
-import { BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
 
 const Bars: FC = () => {
   const currBars = useSelector((state: AppState) => state.reducedBars);

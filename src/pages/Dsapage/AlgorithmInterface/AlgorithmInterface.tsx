@@ -47,12 +47,19 @@ const AlgorithmInterface: FC = () => {
       }
     }
     shuffle(currBarsRef.current?.bars);
+    dispatch({
+      type: BAR_ORDER_TYPE,
+      payload: { ...currBarsRef.current },
+    });
     setTimeout(() => {
-      dispatch({
-        type: BAR_ORDER_TYPE,
-        payload: { ...currBarsRef.current },
-      });
-    }, 50);
+      if (resetFlagRef.current) {
+        resetFlagRef.current.flag = false;
+        dispatch({
+          type: RESET_FLAG_TYPE,
+          payload: { ...resetFlagRef.current },
+        });
+      }
+    }, 500);
   };
 
   if (

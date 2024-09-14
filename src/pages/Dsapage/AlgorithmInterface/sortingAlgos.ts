@@ -187,8 +187,64 @@ const mergeSort = async (currBars: Bars, callDispatch: (action: AnyAction) => vo
     }
 }
 
-const heapSort = (bars: Bars, callDispatch: (action: AnyAction) => void, resetFlag: ResetFlag | null) => {
+const maxHeapify = async (currBars: Bars, i: number, heapSize:number, callDispatch: (action: AnyAction) => void, resetFlag: ResetFlag | null) => {
+    let l: number = 2*i + 1;
+    let r: number = (2*i) + 2;
+    let largest: number = 0;
+    let temp: Bar;
 
+    if (l <= heapSize - 1){
+        if (parseInt(currBars.bars[l].height.substring(0, currBars.bars[l].height.length - 2)) > parseInt(currBars.bars[i].height.substring(0, currBars.bars[i].height.length - 2))) {
+            largest = l;
+        } else {
+            largest = i;
+        }
+    } else {
+        largest = i;
+    }
+
+    if (r <= heapSize - 1) {
+        if (parseInt(currBars.bars[r].height.substring(0, currBars.bars[r].height.length - 2)) > parseInt(currBars.bars[largest].height.substring(0, currBars.bars[largest].height.length - 2))) {
+            largest = r;
+        }
+    }
+ 
+    if (largest !== i) {
+        temp = currBars.bars[i];
+        currBars.bars[i] = currBars.bars[largest];
+        currBars.bars[largest] = temp;
+        callDispatch({
+            type: BAR_ORDER_TYPE,
+            payload: { ...currBars }
+        });
+
+        await maxHeapify(currBars, largest, heapSize, callDispatch, resetFlag);
+    }
+}
+
+const buildMaxHeap = async (currBars: Bars, n: number, callDispatch: (action: AnyAction) => void, resetFlag: ResetFlag | null) => {
+    let heapSize = n;
+    for (let i = Math.floor(n/2) - 1; i >= 0; i--) {
+        await maxHeapify(currBars, i, heapSize, callDispatch, resetFlag);
+    }
+}
+
+const heapSort = async (currBars: Bars, callDispatch: (action: AnyAction) => void, resetFlag: ResetFlag | null) => {
+    await buildMaxHeap(currBars, currBars.bars.length, callDispatch, resetFlag);
+    let temp: Bar;
+    let heapSize: number = currBars.bars.length;
+    for (let i = currBars.bars.length - 1; i >= 1; i--) {
+        temp = currBars.bars[0];
+        currBars.bars[0] = currBars.bars[i];
+        currBars.bars[i] = temp;
+        heapSize -= 1;
+        await maxHeapify(currBars, 0, heapSize, callDispatch, resetFlag)
+    }
+
+    callDispatch({
+        type: BAR_ORDER_TYPE,
+        payload: { ...currBars }
+    });
 }
 
 const quickSort = (bars: Bars, callDispatch: (action: AnyAction) => void, resetFlag: ResetFlag | null) => {
