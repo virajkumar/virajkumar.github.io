@@ -1,0 +1,13 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 6,
+    "[css]": {
+        "editor.tabSize": 6
+    },
+    "[typescript]": {
+        "editor.tabSize": 6
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 6
+    }
+}

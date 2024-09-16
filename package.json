@@ -19,7 +19,6 @@
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
     "redux": "^5.0.1",
-    "typescript": "^5.5.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -29,12 +28,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -49,6 +42,11 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.1.1",
+    "prettier": "^3.1.0"
   }
 }

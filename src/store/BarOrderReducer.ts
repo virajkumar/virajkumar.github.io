@@ -1,13 +1,13 @@
 export const BAR_ORDER_TYPE = "BAR_ORDER_TYPE";
 
 export interface Bar {
-    id: string,
-    width: string,
-    height: string,
-    left: string,
-    top: string,
-    position: string,
-    backgroundColor: string
+    id: string;
+    width: string;
+    height: string;
+    left: string;
+    top: string;
+    position: string;
+    backgroundColor: string;
 }
 
 export interface Bars {
@@ -20,8 +20,10 @@ export interface BarsAction {
     payload: Bars | null;
 }
 
-export const BarOrderReducer = (state: Bars | null = null,
-    action: BarsAction): Bars | null => {
+export const BarOrderReducer = (
+    state: Bars | null = null,
+    action: BarsAction
+): Bars | null => {
     switch (action.type) {
         case BAR_ORDER_TYPE:
             return action.payload;
@@ -29,3 +31,4 @@ export const BarOrderReducer = (state: Bars | null = null,
             return state;
     }
 };
+// hi
