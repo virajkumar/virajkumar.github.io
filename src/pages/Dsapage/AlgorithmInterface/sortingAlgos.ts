@@ -379,6 +379,17 @@ const partitionQuickSort = async (
     await new Promise((resolve) => setTimeout(resolve, 20));
 
     for (let j = p; j <= r - 1; j++) {
+        if (resetFlag) {
+            if (resetFlag.flag === true) {
+                callDispatch({
+                    type: RESET_FLAG_TYPE,
+                    payload: { ...resetFlag },
+                });
+                return await new Promise((resolve) => {
+                    resolve(0);
+                });
+            }
+        }
         currBars.bars[j].backgroundColor = "red";
         setTimeout(() => {
             callDispatch({
@@ -417,8 +428,16 @@ const partitionQuickSort = async (
             temp = currBars.bars[i];
             currBars.bars[i] = currBars.bars[j];
             currBars.bars[j] = temp;
-            if (i <= 0) {
-                currBars.bars[i + 1].backgroundColor = "blue";
+            if (i === 0) {
+                currBars.bars[0].backgroundColor = "blue";
+                setTimeout(() => {
+                    callDispatch({
+                        type: BAR_ORDER_TYPE,
+                        payload: { ...currBars },
+                    });
+                }, 20);
+                await new Promise((resolve) => setTimeout(resolve, 20));
+                currBars.bars[1].backgroundColor = "blue";
                 setTimeout(() => {
                     callDispatch({
                         type: BAR_ORDER_TYPE,
@@ -427,6 +446,14 @@ const partitionQuickSort = async (
                 }, 20);
                 await new Promise((resolve) => setTimeout(resolve, 20));
             } else {
+                currBars.bars[i - 1].backgroundColor = "blue";
+                setTimeout(() => {
+                    callDispatch({
+                        type: BAR_ORDER_TYPE,
+                        payload: { ...currBars },
+                    });
+                }, 20);
+                await new Promise((resolve) => setTimeout(resolve, 20));
                 currBars.bars[i].backgroundColor = "blue";
                 setTimeout(() => {
                     callDispatch({
@@ -445,7 +472,16 @@ const partitionQuickSort = async (
             }, 20);
             await new Promise((resolve) => setTimeout(resolve, 20));
         }
-
+        if (i >= 0) {
+            currBars.bars[i].backgroundColor = "blue";
+            setTimeout(() => {
+                callDispatch({
+                    type: BAR_ORDER_TYPE,
+                    payload: { ...currBars },
+                });
+            }, 20);
+            await new Promise((resolve) => setTimeout(resolve, 20));
+        }
         currBars.bars[j].backgroundColor = "blue";
         setTimeout(() => {
             callDispatch({
@@ -459,6 +495,24 @@ const partitionQuickSort = async (
     currBars.bars[i + 1] = currBars.bars[r];
     currBars.bars[r] = temp;
 
+    currBars.bars[i + 1].backgroundColor = "blue";
+    setTimeout(() => {
+        callDispatch({
+            type: BAR_ORDER_TYPE,
+            payload: { ...currBars },
+        });
+    }, 20);
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    currBars.bars[r].backgroundColor = "blue";
+    setTimeout(() => {
+        callDispatch({
+            type: BAR_ORDER_TYPE,
+            payload: { ...currBars },
+        });
+    }, 20);
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
     x.backgroundColor = "blue";
     setTimeout(() => {
         callDispatch({
@@ -466,10 +520,9 @@ const partitionQuickSort = async (
             payload: { ...currBars },
         });
     }, 20);
-
     await new Promise((resolve) => setTimeout(resolve, 20));
 
-    return new Promise((resolve, reject) => {
+    return await new Promise((resolve, reject) => {
         resolve(i + 1);
     });
 };
@@ -481,6 +534,15 @@ const mainQuickSort = async (
     callDispatch: (action: AnyAction) => void,
     resetFlag: ResetFlag | null
 ) => {
+    if (resetFlag) {
+        if (resetFlag.flag === true) {
+            callDispatch({
+                type: RESET_FLAG_TYPE,
+                payload: { ...resetFlag },
+            });
+            return;
+        }
+    }
     let q: number;
     if (p < r) {
         q = await partitionQuickSort(currBars, p, r, callDispatch, resetFlag);
@@ -505,6 +567,15 @@ const quickSort = async (
         type: BAR_ORDER_TYPE,
         payload: { ...currBars },
     });
+    if (resetFlag) {
+        if (resetFlag.flag === true) {
+            resetFlag.flag = false;
+            callDispatch({
+                type: RESET_FLAG_TYPE,
+                payload: { ...resetFlag },
+            });
+        }
+    }
 };
 
 const sortingAlgos = (dsaItem: string | undefined, callDispatch: (action: AnyAction) => void, bars: Bars | null, resetFlag: ResetFlag | null) => {
