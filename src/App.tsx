@@ -15,6 +15,7 @@ import { AppState } from "./store/AppState.ts";
 import { Bars, BAR_ORDER_TYPE } from "./store/BarOrderReducer.ts";
 import initializeBars from "./pages/Dsapage/initializeBars.ts";
 import { ResetFlag, RESET_FLAG_TYPE } from "./store/ResetFlagReducer.ts";
+import { PUSH_BOX_TYPE } from "./store/PushBoxValReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,14 @@ function App() {
         bars: initialBars?.bars,
         flagShuffle: initialBars?.flagShuffle,
       },
+    });
+
+    dispatch({
+      type: PUSH_BOX_TYPE,
+      payload: {
+        empty: false,
+        value: 'A'
+      }
     });
   }
 

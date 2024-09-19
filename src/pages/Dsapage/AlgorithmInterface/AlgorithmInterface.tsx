@@ -7,6 +7,8 @@ import { useRef, useEffect } from "react";
 import { shuffle } from "../shuffleBars.ts";
 import { BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
 import { RESET_FLAG_TYPE } from "../../../store/ResetFlagReducer.ts";
+import SortingUI from "./SortingUI.tsx";
+import StackUI from "./SortingUI.tsx";
 
 const AlgorithmInterface: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -69,20 +71,14 @@ const AlgorithmInterface: FC = () => {
     currDSAItem === "quick-sort"
   ) {
     return (
-      <div id="algorithm-interface-container">
-        <div id="algorithm-interface-box">
-          <div id="play-button" onClick={handleClickPlay}>
-            Play
-          </div>
-          <div id="reset-button" onClick={handleClickReset}>
-            Reset
-          </div>
-        </div>
-        <div id="label">{currDSAItem}</div>
-      </div>
+      <SortingUI />
+    );
+  } else if (currDSAItem == "stack-ds") {
+    return (
+      <StackUI />
     );
   } else {
-    return <div></div>;
+
   }
 };
 

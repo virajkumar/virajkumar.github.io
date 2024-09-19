@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import "./AlgorithmMenu.css";
-import { useSelector } from "react-redux";
-import { AppState } from "../../store/AppState";
 import { useDispatch } from "react-redux";
 import { DSA_ITEM_TYPE, DSAItem } from "../../store/DSAItemReducer.ts";
 
@@ -36,7 +34,7 @@ const AlgorithmMenu: FC = () => {
         <option value="queue-ds">Queue Data Structure</option>
         <option value="linked-list-ds">Linked List Data Structure</option>
         <option value="hash-table-ds">Hash Table Data Sturcture</option>
-        <option value="binary-search-tree-ds">Binary Search Tree</option>
+        <option value="binary-search-tree-ds">Binary Search Tree Data Structure</option>
         <option value="rod-cutting-dp">
           Rod Cutting (Dynamic Programming)
         </option>

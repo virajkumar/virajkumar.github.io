@@ -1,7 +1,6 @@
 import React, { FC, CSSProperties } from "react";
-import "./Visualizer.css";
-import { useSelector, useDispatch } from "react-redux";
-import { AppState } from "../../../store/AppState";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../../store/AppState";
 import "./Bars.css";
 
 const Bars: FC = () => {

@@ -1,10 +1,9 @@
 import React, { FC } from "react";
 import "./Visualizer.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { AppState } from "../../../store/AppState";
-import Sorting from "./Sorting.tsx";
-import { Bars, BAR_ORDER_TYPE } from "../../../store/BarOrderReducer.ts";
-import initializeBars from "../initializeBars.ts";
+import Sorting from "./Sorting/Sorting.tsx";
+import StackDS from "./Stacks/StackDS.tsx";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -15,19 +14,12 @@ const Visualizer: FC = () => {
     currDSAItem === "quick-sort"
   ) {
     return (
-      <div id="visualizer-container">
-        <div id="visualizer-box">
-          <div id="x-axis"></div>
-          <div id="x-axis-label">Index</div>
-          <Sorting />
-          <div id="y-axis"></div>
-          <div id="y-axis-label">Size</div>
-        </div>
-        <p id="label">Visualizer</p>
-      </div>
+      <Sorting />
     );
-  } else {
-    return <div></div>;
+  } else if (currDSAItem === "stack-ds") {
+    return (
+      <StackDS />
+    );
   }
 };
 

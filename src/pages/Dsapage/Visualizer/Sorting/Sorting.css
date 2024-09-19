@@ -1,0 +1,90 @@
+#sorting-container{
+    display: flex;
+    flex: 1;
+    position: relative;
+    left: 0px;
+}
+
+#visualizer-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 650px;
+    max-height: 650px;
+    left: 800px;
+    top: -100px;
+    flex-direction: column;
+}
+
+#visualizer-box {
+    display: flex;
+    flex: 1;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 600px;
+    max-height: 600px;
+    position: relative;
+    left: 0px;
+    background-color: white;
+    top: 0px;
+    flex-direction: column;
+}
+
+#label {
+    display: flex;
+    flex: 1;
+    left: 250px;
+    color: white;
+    position: relative;
+    top: 0px;
+    max-width: 100px;
+    justify-content: center;
+}
+
+#x-axis {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: black;
+    min-width: 600px;
+    min-height: 2px;
+    max-height: 3px;
+    top: 550px;
+}
+
+#x-axis-label {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: white;
+    top: 560px;
+    left: 275px;
+    max-width: 50px;
+    max-height: 20px;
+}
+
+#y-axis {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: black;
+    min-width: 2px;
+    max-width: 3px;
+    min-height: 600px;
+    left: 525px;
+    top: -622px;
+}
+
+#y-axis-label {
+    display: flex;
+    flex: 1;
+    position: relative;
+    background: white;
+    top: -950px;
+    left: 550px;
+    max-width: 50px;
+    max-height: 20px;
+}
