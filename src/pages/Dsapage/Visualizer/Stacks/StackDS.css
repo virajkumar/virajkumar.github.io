@@ -36,3 +36,43 @@
     max-width: 100px;
     justify-content: center;
 }
+
+#empty-stack {
+    display: flex;
+    flex: 1;
+    z-index: 0;
+    position: relative;
+    top: 100px;
+
+}
+
+#left-arrow {
+    display: flex;
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 50px;
+    max-height: 50px;
+    top: 100px;
+    left: 150px;
+    z-index: 100;
+    background-image: url(arrowL.webp);
+    background-size: contain;
+}
+
+#right-arrow {
+    display: flex;
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 50px;
+    max-height: 50px;
+    top: -510px;
+    left: 340px;
+    background-image: url(arrowL.webp);
+    background-size: contain;
+}

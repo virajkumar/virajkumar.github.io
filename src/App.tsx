@@ -16,6 +16,9 @@ import { Bars, BAR_ORDER_TYPE } from "./store/BarOrderReducer.ts";
 import initializeBars from "./pages/Dsapage/initializeBars.ts";
 import { ResetFlag, RESET_FLAG_TYPE } from "./store/ResetFlagReducer.ts";
 import { PUSH_BOX_TYPE } from "./store/PushBoxValReducer.ts";
+import { POP_BOX_TYPE } from "./store/PopBoxReducer.ts";
+import { Stack, STACK_TYPE } from "./store/StackReducer.ts";
+import { PUSH_POP_TYPE } from "./store/PushOrPopReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +46,29 @@ function App() {
     const initialBars: Bars | null = initializeBars();
 
     dispatch({
+      type: STACK_TYPE,
+      payload: {
+        stack: [],
+        currSize: 0,
+        maxSize: 5
+      }
+    });
+
+    //       {
+    //         id: 0,
+    //         alphabet: "B",
+    //         left: "270px",
+    //         top: "-70px",
+    //         position: "relative",
+    //         backgroundColor: "green"
+    //       }
+    //     ],
+    //     currSize: 1,
+    //     maxSize: 5
+    //   }
+    // });
+
+    dispatch({
       type: BAR_ORDER_TYPE,
       payload: {
         bars: initialBars?.bars,
@@ -57,6 +83,23 @@ function App() {
         value: 'A'
       }
     });
+
+    dispatch({
+      type: POP_BOX_TYPE,
+      payload: {
+        empty: true,
+        value: '',
+        height: 0
+      }
+    });
+
+    dispatch({
+      type: PUSH_POP_TYPE,
+      payload: {
+        push: false,
+        pop: false
+      }
+    })
   }
 
   return (

@@ -31,4 +31,3 @@ export const BarOrderReducer = (
             return state;
     }
 };
-// hi
