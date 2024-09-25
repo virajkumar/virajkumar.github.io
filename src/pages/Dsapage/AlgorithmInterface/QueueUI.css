@@ -1,0 +1,23 @@
+#algorithm-interface-container {
+    display: flex;
+    flex: 1;
+    position: relative;
+    top: 200px;
+    left: 140px;
+    color: white;
+    font-size: 20px;
+    flex-direction: row;
+    max-width: 500px;
+    min-height: 100px;
+    max-height: 100px;
+}
+
+#algorithm-interface-form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    max-width: 500px;
+    min-width: 500px;
+    justify-content: space-around;
+}

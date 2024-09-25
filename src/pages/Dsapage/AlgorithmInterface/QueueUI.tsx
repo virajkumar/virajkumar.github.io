@@ -8,6 +8,7 @@ import { QUEUE_TYPE } from "../../../store/QueueReducer.ts";
 import { ENQUEUE_BOX_TYPE } from "../../../store/EnqueueBoxReducer.ts";
 import { DEQUEUE_BOX_TYPE } from "../../../store/DequeueBoxReducer.ts";
 import { ElementQ } from "../../../store/QueueReducer.ts";
+import "./QueueUI.css";
 
 const QueueUI: FC = () => {
     const dispatch = useDispatch();
@@ -101,13 +102,13 @@ const QueueUI: FC = () => {
         <div id="algorithm-interface-container">
             <form id="algorithm-interface-form">
                 <div>
-                    <label id="enqueue-button" htmlFor="enqueue">Click to push onto stack:</label>
+                    <label id="enqueue-button" htmlFor="enqueue">Click to Enqueue into Queue:</label>
                     <button type="button" onClick={handleClickEnqueue}>
                         ENQUEUE
                     </button>
                 </div>
                 <div>
-                    <label id="dequeue-button" htmlFor="dequeue">Click to pop from stack</label>
+                    <label id="dequeue-button" htmlFor="dequeue">Click to Dequeue from Queue</label>
                     <button type="button" onClick={handleClickDequeue}>
                         DEQUEUE
                     </button>

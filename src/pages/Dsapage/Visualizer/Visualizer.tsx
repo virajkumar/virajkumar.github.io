@@ -5,6 +5,7 @@ import { AppState } from "../../../store/AppState";
 import Sorting from "./Sorting/Sorting.tsx";
 import StackDS from "./Stacks/StackDS.tsx";
 import QueueDS from "./Queue/QueueDS.tsx";
+import LCSDP from "./LCSDP/LCSDP.tsx";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -24,6 +25,10 @@ const Visualizer: FC = () => {
   } else if (currDSAItem === "queue-ds") {
     return (
       <QueueDS />
+    )
+  } else if (currDSAItem === "longest-common-subsequence-dp") {
+    return (
+      <LCSDP />
     )
   }
 };

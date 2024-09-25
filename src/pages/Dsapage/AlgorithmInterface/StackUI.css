@@ -15,19 +15,9 @@
 #algorithm-interface-form {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
     max-width: 500px;
     min-width: 500px;
     justify-content: space-around;
-}
-
-#push-button {
-    display: flex;
-    flex: 1;
-}
-
-#pop-button {
-    display: flex;
-    flex: 1;
 }

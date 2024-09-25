@@ -32,15 +32,6 @@ const AlgorithmMenu: FC = () => {
         <option value="quick-sort">Quick Sort</option>
         <option value="stack-ds">Stack Data Structure</option>
         <option value="queue-ds">Queue Data Structure</option>
-        <option value="linked-list-ds">Linked List Data Structure</option>
-        <option value="hash-table-ds">Hash Table Data Sturcture</option>
-        <option value="binary-search-tree-ds">Binary Search Tree Data Structure</option>
-        <option value="rod-cutting-dp">
-          Rod Cutting (Dynamic Programming)
-        </option>
-        <option value="matrix-chain-multiplication-dp">
-          Matrix Chain Multiplication (Dynamic Programming)
-        </option>
         <option value="longest-common-subsequence-dp">
           Longest Common Subsequence (Dynamic Programming)
         </option>

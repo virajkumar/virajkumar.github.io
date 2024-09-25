@@ -103,8 +103,8 @@ const StackUI: FC = () => {
         <div id="algorithm-interface-container">
             <form id="algorithm-interface-form">
                 <div>
-                    <label id="push-button" htmlFor="push">Click to push onto stack:</label>
-                    <button type="button" onClick={handleClickPush}>
+                    <label id="push-button" htmlFor="push">Click to push onto stack</label>
+                    <button id="p-button" type="button" onClick={handleClickPush}>
                         PUSH
                     </button>
                 </div>

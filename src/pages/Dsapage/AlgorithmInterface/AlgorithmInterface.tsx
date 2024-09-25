@@ -4,7 +4,8 @@ import { AppState } from "../../../store/AppState.ts";
 import { useSelector } from "react-redux";
 import SortingUI from "./SortingUI.tsx";
 import StackUI from "./StackUI.tsx";
-import QueueUI from "./QueueUI.tsx"
+import QueueUI from "./QueueUI.tsx";
+import DPUI from "./DPUI.tsx";
 
 const AlgorithmInterface: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -24,7 +25,11 @@ const AlgorithmInterface: FC = () => {
   } else if (currDSAItem === "queue-ds") {
     return (
       <QueueUI />
-    )
+    );
+  } else if (currDSAItem === "longest-common-subsequence-dp") {
+    return (
+      <DPUI />
+    );
   }
 };
 
