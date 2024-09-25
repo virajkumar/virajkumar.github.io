@@ -1,0 +1,13 @@
+#enqueuebox-container {
+    background-color: lightsalmon;
+    position: relative;
+    left: 100px;
+    top: -500px;
+    max-width: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    min-height: 50px;
+    font-size: 50px;
+    text-align: center;
+    z-index: 1;
+}

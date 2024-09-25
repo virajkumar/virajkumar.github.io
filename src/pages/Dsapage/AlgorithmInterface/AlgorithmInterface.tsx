@@ -4,6 +4,7 @@ import { AppState } from "../../../store/AppState.ts";
 import { useSelector } from "react-redux";
 import SortingUI from "./SortingUI.tsx";
 import StackUI from "./StackUI.tsx";
+import QueueUI from "./QueueUI.tsx"
 
 const AlgorithmInterface: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -16,12 +17,14 @@ const AlgorithmInterface: FC = () => {
     return (
       <SortingUI />
     );
-  } else if (currDSAItem == "stack-ds") {
+  } else if (currDSAItem === "stack-ds") {
     return (
       <StackUI />
     );
-  } else {
-
+  } else if (currDSAItem === "queue-ds") {
+    return (
+      <QueueUI />
+    )
   }
 };
 

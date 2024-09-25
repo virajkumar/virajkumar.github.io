@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../store/AppState";
 import Sorting from "./Sorting/Sorting.tsx";
 import StackDS from "./Stacks/StackDS.tsx";
+import QueueDS from "./Queue/QueueDS.tsx";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -20,6 +21,10 @@ const Visualizer: FC = () => {
     return (
       <StackDS />
     );
+  } else if (currDSAItem === "queue-ds") {
+    return (
+      <QueueDS />
+    )
   }
 };
 

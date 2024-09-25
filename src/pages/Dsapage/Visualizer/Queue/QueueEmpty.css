@@ -1,17 +1,17 @@
-#stack-overflow {
+#queue-empty {
     max-width: 100px;
     min-width: 100px;
     max-height: 50px;
     min-height: 50px;
     background-color: red;
     position: relative;
-    left: 100px;
+    left: 400px;
     top: -500px;
     font-size: 18px;
     text-align: center;
 }
 
-#stack-underflow {
+#queue-not-empty {
     max-width: 100px;
     min-width: 100px;
     max-height: 100px;

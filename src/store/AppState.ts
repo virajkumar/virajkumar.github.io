@@ -5,7 +5,9 @@ import { ResetFlagReducer } from "./ResetFlagReducer.ts";
 import { PushBoxValReducer } from "./PushBoxValReducer.ts";
 import { PopBoxValReducer } from "./PopBoxReducer.ts";
 import { StackReducer } from "./StackReducer.ts";
-import { PushOrPopValReducer } from "./PushOrPopReducer.ts";
+import { EnqueueBoxValReducer } from "./EnqueueBoxReducer.ts";
+import { QueueReducer } from "./QueueReducer.ts";
+import { DequeueBoxValReducer } from "./DequeueBoxReducer.ts";
 
 export const rootReducer = combineReducers({
     dsa_item: DSAItemReducer,
@@ -14,6 +16,9 @@ export const rootReducer = combineReducers({
     pushBox: PushBoxValReducer,
     popBox: PopBoxValReducer,
     stack: StackReducer,
-    pushOrPop: PushOrPopValReducer
+    enqueueBox: EnqueueBoxValReducer,
+    queue: QueueReducer,
+    dequeueBox: DequeueBoxValReducer
 });
+
 export type AppState = ReturnType<typeof rootReducer>;

@@ -1,4 +1,4 @@
-#stack-overflow {
+#queue-overflow {
     max-width: 100px;
     min-width: 100px;
     max-height: 50px;
@@ -6,12 +6,12 @@
     background-color: red;
     position: relative;
     left: 100px;
-    top: -500px;
+    top: -600px;
     font-size: 18px;
     text-align: center;
 }
 
-#stack-underflow {
+#queue-underflow {
     max-width: 100px;
     min-width: 100px;
     max-height: 100px;

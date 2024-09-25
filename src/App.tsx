@@ -18,15 +18,14 @@ import { ResetFlag, RESET_FLAG_TYPE } from "./store/ResetFlagReducer.ts";
 import { PUSH_BOX_TYPE } from "./store/PushBoxValReducer.ts";
 import { POP_BOX_TYPE } from "./store/PopBoxReducer.ts";
 import { Stack, STACK_TYPE } from "./store/StackReducer.ts";
-import { PUSH_POP_TYPE } from "./store/PushOrPopReducer.ts";
+import { QUEUE_TYPE } from "./store/QueueReducer.ts";
+import { ENQUEUE_BOX_TYPE } from "./store/EnqueueBoxReducer.ts";
+import { DEQUEUE_BOX_TYPE } from "./store/DequeueBoxReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
 
   const currBars = useSelector((state: AppState) => state.reducedBars);
-
-  // console.log(currBars);
-  // console.log(10);
 
   if (!currBars) {
     dispatch({
@@ -54,19 +53,31 @@ function App() {
       }
     });
 
-    //       {
-    //         id: 0,
-    //         alphabet: "B",
-    //         left: "270px",
-    //         top: "-70px",
-    //         position: "relative",
-    //         backgroundColor: "green"
-    //       }
-    //     ],
-    //     currSize: 1,
-    //     maxSize: 5
-    //   }
-    // });
+    dispatch({
+      type: QUEUE_TYPE,
+      payload: {
+        queue: [],
+        currSize: 0,
+        maxSize: 5
+      }
+    })
+
+    dispatch({
+      type: ENQUEUE_BOX_TYPE,
+      payload: {
+        empty: false,
+        value: 'A'
+      }
+    })
+
+    dispatch({
+      type: DEQUEUE_BOX_TYPE,
+      payload: {
+        empty: true,
+        value: '',
+        height: 0
+      }
+    })
 
     dispatch({
       type: BAR_ORDER_TYPE,
@@ -92,14 +103,6 @@ function App() {
         height: 0
       }
     });
-
-    dispatch({
-      type: PUSH_POP_TYPE,
-      payload: {
-        push: false,
-        pop: false
-      }
-    })
   }
 
   return (

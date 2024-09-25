@@ -13,10 +13,6 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../../store/AppState.ts";
 
 const StackDS: FC = () => {
-    const pushOrPop = useSelector((state: AppState) => { return state.pushOrPop });
-    const push = pushOrPop?.push;
-    const pop = pushOrPop?.pop;
-
     return (<div id="visualizer-container">
         <div id="visualizer-box">
             <div id="left-arrow"></div>
@@ -28,6 +24,7 @@ const StackDS: FC = () => {
             <Overflow />
             <StackEmpty />
         </div>
+        <div id="max-size">Max Size: 5</div>
     </div>
     );
 }

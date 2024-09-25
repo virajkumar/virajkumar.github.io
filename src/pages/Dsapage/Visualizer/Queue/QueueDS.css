@@ -1,4 +1,4 @@
-#visualizer-container {
+#visualizer-container-q {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-#visualizer-box {
+#visualizer-box-q {
     display: flex;
     flex: 1;
     min-width: 600px;
@@ -26,43 +26,16 @@
     flex-direction: column;
 }
 
-#label {
+#empty-queue {
     display: flex;
     flex: 1;
-    left: 250px;
-    color: white;
+    z-index: 0;
     position: relative;
     top: 0px;
-    max-width: 100px;
-    justify-content: center;
-}
-
-#empty-stack {
-    display: flex;
-    flex: 1;
-    z-index: 0;
-    position: relative;
-    top: 100px;
 
 }
 
-#left-arrow {
-    display: flex;
-    flex: 1;
-    z-index: 0;
-    position: relative;
-    min-width: 100px;
-    max-width: 100px;
-    min-height: 50px;
-    max-height: 50px;
-    top: 100px;
-    left: 150px;
-    z-index: 100;
-    background-image: url(arrowL.webp);
-    background-size: contain;
-}
-
-#right-arrow {
+#left-arrow-q {
     display: flex;
     flex: 1;
     z-index: 1;
@@ -71,13 +44,28 @@
     max-width: 100px;
     min-height: 50px;
     max-height: 50px;
-    top: -510px;
-    left: 340px;
-    background-image: url(arrowL.webp);
+    top: 70px;
+    left: 150px;
+    background-image: url(../Stacks/arrowL.webp);
     background-size: contain;
 }
 
-#max-size {
+#right-arrow-q {
+    display: flex;
+    flex: 1;
+    z-index: 1;
+    position: relative;
+    min-width: 100px;
+    max-width: 100px;
+    min-height: 47px;
+    max-height: 47px;
+    top: -90px;
+    left: 340px;
+    background-image: url(arrow-up.png);
+    background-size: contain;
+}
+
+#max-size-q {
     display: flex;
     flex: 1;
     z-index: 1;
