@@ -2,7 +2,7 @@ import React, { FC, useRef, useEffect } from 'react';
 import "./DPUI.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../store/AppState';
-import { LCSDP_TYPE } from '../../../store/LCSDP.ts';
+import { LCSDP_TYPE } from '../../../store/LCSDPReducer.ts';
 
 const DPUI: FC = () => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const DPUI: FC = () => {
 
     const handleGenStringX = (event) => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const length = Math.floor(Math.random() * (15 - 7 + 1)) + 7;
+        const length = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
         let randStringX = "";
 
         for (let i = 0; i < length; i++) {
@@ -34,7 +34,7 @@ const DPUI: FC = () => {
 
     const handleGenStringY = (event) => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const length = Math.floor(Math.random() * (15 - 7 + 1)) + 7;
+        const length = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
         let randStringY = "";
 
         for (let i = 0; i < length; i++) {
@@ -62,39 +62,36 @@ const DPUI: FC = () => {
             const c: number[][] = [];
 
             if (m && n) {
-                let i = 0;
-                let j = 0;
-                for (i = 0; i < m; i++) {
-                    if (i == 0) {
-                        b.push([]);
-                    }
+                for (let i = 0; i < m; i++) {
                     b.push([]);
-                    for (let j = 1; j < n; j++) {
+                    c.push([]);
+                    for (let j = 0; j < n; j++) {
                         b[i].push("");
+                        c[i].push(0);
                     }
                 }
-            }
 
-            for (const i of Array(m).keys()) {
-                c[i][0] = 0;
-            }
+                for (const i of Array(m).keys()) {
+                    c[i][0] = 0;
+                }
 
-            for (const j of Array(n).keys()) {
-                c[0][j] = 0;
-            }
-
-            for (const i of Array(m).keys()) {
                 for (const j of Array(n).keys()) {
-                    if (stringX && stringY) {
-                        if (stringX[i] === stringY[j]) {
-                            c[i][j] = c[i - 1][j - 1] + 1;
-                            b[i][j] = "NW";
-                        } else if (c[i - 1][j] >= c[i][j - 1]) {
-                            c[i][j] = c[i - 1][j];
-                            b[i][j] = "N";
-                        } else {
-                            c[i][j] = c[i][j - 1];
-                            b[i][j] = "W";
+                    c[0][j] = 0;
+                }
+
+                for (let i = 1; i < m; i++) {
+                    for (let j = 1; j < n; j++) {
+                        if (stringX && stringY) {
+                            if (stringX[i] === stringY[j]) {
+                                c[i][j] = c[i - 1][j - 1] + 1;
+                                b[i][j] = "NW";
+                            } else if (c[i - 1][j] >= c[i][j - 1]) {
+                                c[i][j] = c[i - 1][j];
+                                b[i][j] = "N";
+                            } else {
+                                c[i][j] = c[i][j - 1];
+                                b[i][j] = "W";
+                            }
                         }
                     }
                 }
@@ -103,11 +100,10 @@ const DPUI: FC = () => {
         }
 
         const printLCS = (bMatrix: string[][], stringX: string | undefined, i: number | undefined, j: number | undefined): string | undefined => {
+            if (i === 0 || j === 0) {
+                return "";
+            }
             if (stringX && i && j) {
-                if (i === 0 || j === 0) {
-                    return "";
-                }
-
                 if (bMatrix[i][j] == "NW") {
                     return printLCS(bMatrix, stringX, i - 1, j - 1) + stringX[i];
                 } else if (bMatrix[i][j] == "N") {
@@ -118,15 +114,15 @@ const DPUI: FC = () => {
             }
         }
 
-        const lcsReturnMatrices: LCSLengthReturnType = lcsLength(currLCSDPRef.current?.stringX, currLCSDPRef.current?.stringY, currLCSDPRef.current?.stringX.length, currLCSDPRef.current?.stringY.length);
-        const lcsString: string | undefined = printLCS(lcsReturnMatrices.bMatrix, currLCSDPRef.current?.stringX, currLCSDPRef.current?.stringX.length, currLCSDPRef.current?.stringY.length);
-
-        if (currLCSDPRef.current && lcsString) {
+        if (currLCSDPRef.current) {
+            const lcsReturnMatrices: LCSLengthReturnType = lcsLength(currLCSDPRef.current?.stringX, currLCSDPRef.current?.stringY, currLCSDPRef.current?.stringX.length, currLCSDPRef.current?.stringY.length);
+            const lcsString: string | undefined = printLCS(lcsReturnMatrices.bMatrix, currLCSDPRef.current?.stringX, currLCSDPRef.current?.stringX.length - 1, currLCSDPRef.current?.stringY.length - 1);
             currLCSDPRef.current.bMatrix = lcsReturnMatrices.bMatrix;
             currLCSDPRef.current.cMatrix = lcsReturnMatrices.cMatrix;
             currLCSDPRef.current.processed = true;
-            currLCSDPRef.current.lcsString = lcsString;
-
+            if (lcsString) {
+                currLCSDPRef.current.lcsString = lcsString;
+            }
             dispatch({
                 type: LCSDP_TYPE,
                 payload: { ...currLCSDPRef.current }

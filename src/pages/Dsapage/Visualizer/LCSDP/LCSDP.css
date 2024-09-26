@@ -32,6 +32,7 @@
     max-height: 50px;
     min-height: 50px;
     border: 3px solid black;
+    box-sizing: border-box;
 }
 
 #string-y {
@@ -43,6 +44,7 @@
     max-height: 50px;
     min-height: 50px;
     border: 3px solid black;
+    box-sizing: border-box;
 } 
 
 #visualizer-table-lcsdp {
@@ -54,6 +56,7 @@
     max-height: 550px;
     max-height: 550px;
     border: 3px solid black;
+    box-sizing: border-box;
 }
 
 #lcs-string {
@@ -65,6 +68,7 @@
     max-height: 50px;
     min-height: 50px;
     border: 3px solid black;
+    box-sizing: border-box;
 }
 
 /* #visualizer-box-q {

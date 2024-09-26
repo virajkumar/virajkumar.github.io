@@ -8,7 +8,7 @@ import { StackReducer } from "./StackReducer.ts";
 import { EnqueueBoxValReducer } from "./EnqueueBoxReducer.ts";
 import { QueueReducer } from "./QueueReducer.ts";
 import { DequeueBoxValReducer } from "./DequeueBoxReducer.ts";
-import { LCSDPReducer } from "./LCSDP.ts";
+import { LCSDPReducer } from "./LCSDPReducer.ts";
 
 export const rootReducer = combineReducers({
     dsa_item: DSAItemReducer,

@@ -21,6 +21,8 @@ import { Stack, STACK_TYPE } from "./store/StackReducer.ts";
 import { QUEUE_TYPE } from "./store/QueueReducer.ts";
 import { ENQUEUE_BOX_TYPE } from "./store/EnqueueBoxReducer.ts";
 import { DEQUEUE_BOX_TYPE } from "./store/DequeueBoxReducer.ts";
+import LCSDP from "./pages/Dsapage/Visualizer/LCSDP/LCSDP.tsx";
+import { LCSDP_TYPE } from "./store/LCSDPReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -101,6 +103,18 @@ function App() {
         empty: true,
         value: '',
         height: 0
+      }
+    });
+
+    dispatch({
+      type: LCSDP_TYPE,
+      payload: {
+        stringX: "",
+        stringY: "",
+        cMatrix: [],
+        bMatrix: [],
+        processed: false,
+        lcsString: ""
       }
     });
   }
