@@ -2,6 +2,7 @@ import React, { FC, CSSProperties } from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../../store/AppState';
 import "./LCSDP.css";
+import npng from "./N.png";
 
 const LCSDP: FC = () => {
     const currLCSDP = useSelector((state: AppState) => { return state.lcsdp });
@@ -13,39 +14,50 @@ const LCSDP: FC = () => {
             const yLength = currLCSDP.stringY.length;
             let bVal: string;
 
-            for (let i = 0; i < xLength; i++) {
+            for (let i = 0; i < xLength + 1; i++) {
                 tableStyles.push([]);
-                for (let j = 0; j < yLength; j++) {
-                    if (currLCSDP.bMatrix[i][j] === "") {
+                for (let j = 0; j < yLength + 1; j++) {
+                    if (i === 0 || j === 0) {
                         bVal = "";
-                    } else if (currLCSDP.bMatrix[i][j] === "N") {
-                        bVal = "url(N.png)";
-                    } else if (currLCSDP.bMatrix[i][j] === "W") {
-                        bVal = "url(W.png)";
                     } else {
-                        bVal = "url(NW.png)";
+                        if (currLCSDP.bMatrix[i - 1][j - 1] === "") {
+                            bVal = "";
+                        } else if (currLCSDP.bMatrix[i - 1][j - 1] === "N") {
+                            bVal = "url(/N.png)";
+                        } else if (currLCSDP.bMatrix[i - 1][j - 1] === "W") {
+                            bVal = "url(/W.png)";
+                        } else {
+                            bVal = "url(/NW.png)";
+                        }
                     }
                     const currCellStyles = {
-                        minWidth: `${600 / yLength}px`,
-                        maxWidth: `${600 / yLength}px`,
-                        minHeight: `${600 / xLength}px`,
-                        maxHeight: `${600 / xLength}px`,
-                        left: `${(600 / yLength) * j}px`,
-                        top: `${600 / xLength * i}px`,
                         position: "relative",
                         display: "flex",
                         flex: "1",
                         backgroundImage: bVal,
-                        backgroundSize: `${600 / xLength}px`
-
-                    } as CSSProperties
-                    tableStyles[i].push(currCellStyles)
+                        backgroundSize: `${600 / (yLength + 1)}px`,
+                        width: "100%",
+                        justifyContent: "center",
+                        alignContent: "end"
+                    } as CSSProperties;
+                    tableStyles[i].push(currCellStyles);
                 }
             }
 
-            for (let i = 0; i < currLCSDP?.stringX.length; i++) {
-                for (let j = 0; j < currLCSDP?.stringY.length; j++) {
+            let tableMatrix: string[][] = [];
 
+            for (let i = 0; i < xLength + 1; i++) {
+                tableMatrix.push([]);
+                for (let j = 0; j < yLength + 1; j++) {
+                    if (i === 0 && j === 0) {
+                        tableMatrix[i].push("-");
+                    } else if (i === 0 && j !== 0) {
+                        tableMatrix[i].push(currLCSDP.stringY[j - 1]);
+                    } else if (i !== 0 && j === 0) {
+                        tableMatrix[i].push(currLCSDP.stringX[i - 1]);
+                    } else {
+                        tableMatrix[i].push(currLCSDP.cMatrix[i - 1][j - 1].toString())
+                    }
                 }
             }
 
@@ -56,9 +68,13 @@ const LCSDP: FC = () => {
                         <div id="string-y">StringY: {currLCSDP?.stringY}</div>
                     </div>
                     <div id="visualizer-table-lcsdp">
-                        {currLCSDP.cMatrix.map((row) => (row.map((cell) => (
-                            <div className='cell' style={tableStyles[currLCSDP.cMatrix.indexOf(row)][row.indexOf(cell)]}> {cell} </div>
-                        ))))}
+                        {[...Array(xLength + 1).keys()].map((row) => (
+                            <div className="row-container">
+                                {[...Array(yLength + 1).keys()].map((col) => (
+                                    <div className='cell' style={tableStyles[row][col]}> {tableMatrix[row][col]}
+                                    </div>))}
+                            </div>
+                        ))}
                     </div>
                     <div id="lcs-string">
                         Longest Common Subsequence = {currLCSDP?.processed === true ? currLCSDP?.lcsString : ""}
@@ -73,9 +89,6 @@ const LCSDP: FC = () => {
                         <div id="string-y">StringY: {currLCSDP?.stringY}</div>
                     </div>
                     <div id="visualizer-table-lcsdp">
-                        {/* {currLCSDP.cMatrix.map((row) => (row.map((cell) => (
-                        <div className='cell' style={tableStyles[currLCSDP.cMatrix.indexOf(row)][row.indexOf(cell)]}> {cell} </div>
-                    ))))} */}
                     </div>
                     <div id="lcs-string">
                         Longest Common Subsequence =

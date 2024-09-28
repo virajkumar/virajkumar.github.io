@@ -25,6 +25,7 @@ const DPUI: FC = () => {
 
         if (currLCSDPRef.current) {
             currLCSDPRef.current.stringX = randStringX;
+            currLCSDPRef.current.processed = false;
         }
         dispatch({
             type: LCSDP_TYPE,
