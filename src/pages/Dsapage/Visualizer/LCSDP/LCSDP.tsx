@@ -44,6 +44,34 @@ const LCSDP: FC = () => {
                 }
             }
 
+            let k = 0;
+            let p = currLCSDP.stringX.length;
+            let q = currLCSDP.stringY.length;
+            let lcsStringTemp = currLCSDP.lcsString;
+            let bMatrixTemp = currLCSDP.bMatrix;
+
+            while (k < lcsStringTemp.length) {
+                if (bMatrixTemp[p - 1][q - 1] === 'NW') {
+                    tableStyles[p][q].border = "1px solid red";
+                    tableStyles[p][q].boxSizing = "border-box";
+                    k += 1;
+                    p -= 1;
+                    q -= 1;
+                } else if (bMatrixTemp[p - 1][q - 1] === 'N') {
+                    tableStyles[p][q].border = "1px solid red";
+                    tableStyles[p][q].boxSizing = "border-box";
+                    p -= 1;
+                } else if (bMatrixTemp[p - 1][q - 1] === 'W') {
+                    tableStyles[p][q].border = "1px solid red";
+                    tableStyles[p][q].boxSizing = "border-box";
+                    q -= 1;
+                } else if (bMatrixTemp[p - 1][q - 1] === "") {
+                    tableStyles[p][q].border = "1px solid red";
+                    tableStyles[p][q].boxSizing = "border-box";
+                    break;
+                }
+            }
+
             let tableMatrix: string[][] = [];
 
             for (let i = 0; i < xLength + 1; i++) {
