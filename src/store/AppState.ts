@@ -9,6 +9,7 @@ import { EnqueueBoxValReducer } from "./EnqueueBoxReducer.ts";
 import { QueueReducer } from "./QueueReducer.ts";
 import { DequeueBoxValReducer } from "./DequeueBoxReducer.ts";
 import { LCSDPReducer } from "./LCSDPReducer.ts";
+import { GraphReducer } from "./GraphReducer.ts";
 
 export const rootReducer = combineReducers({
     dsa_item: DSAItemReducer,
@@ -20,7 +21,8 @@ export const rootReducer = combineReducers({
     enqueueBox: EnqueueBoxValReducer,
     queue: QueueReducer,
     dequeueBox: DequeueBoxValReducer,
-    lcsdp: LCSDPReducer
+    lcsdp: LCSDPReducer,
+    graph: GraphReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

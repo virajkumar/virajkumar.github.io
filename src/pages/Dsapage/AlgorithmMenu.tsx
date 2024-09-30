@@ -43,12 +43,12 @@ const AlgorithmMenu: FC = () => {
         <option value="topological-sort-graphs">
           Topological Sort (Graphs)
         </option>
-        <option value="kruskal-algorithm">Kruskal's Algorithm (Graphs)</option>
-        <option value="prim-algorithm">Prim's Algorithm (Graphs)</option>
-        <option value="bellman-ford-algorithm">
+        <option value="kruskals-algorithm-graphs">Kruskal's Algorithm (Graphs)</option>
+        <option value="prims-algorithm-graphs">Prim's Algorithm (Graphs)</option>
+        <option value="bellman-ford-algorithm-graphs">
           Bellman Ford Algorithm (Graphs)
         </option>
-        <option value="floyd-warshall-algorithm">
+        <option value="floyd-warshall-algorithm-graphs">
           Floyd Warshall Algorithm (Graphs)
         </option>
       </select>

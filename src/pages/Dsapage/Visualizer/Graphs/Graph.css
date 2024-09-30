@@ -1,0 +1,23 @@
+#visualizer-container-graphs {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 600px;
+    max-height: 600px;
+    top: -50px;
+    left: 800px;
+    background-color: white;
+}
+
+#svg-element {
+    display: flex;
+    flex: 1;
+    position: relative;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 600px;
+    max-height: 600px;
+}

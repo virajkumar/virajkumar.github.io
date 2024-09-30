@@ -2,7 +2,6 @@ import React, { FC, CSSProperties } from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../../../store/AppState';
 import "./LCSDP.css";
-import npng from "./N.png";
 
 const LCSDP: FC = () => {
     const currLCSDP = useSelector((state: AppState) => { return state.lcsdp });
@@ -84,7 +83,7 @@ const LCSDP: FC = () => {
                     } else if (i !== 0 && j === 0) {
                         tableMatrix[i].push(currLCSDP.stringX[i - 1]);
                     } else {
-                        tableMatrix[i].push(currLCSDP.cMatrix[i - 1][j - 1].toString())
+                        tableMatrix[i].push(currLCSDP.cMatrix[i - 1][j - 1].toString());
                     }
                 }
             }

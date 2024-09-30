@@ -1,6 +1,7 @@
 #root {
   display: flex;
   background-image: url(back-image3.jpg);
+  background-size: auto;
 }
 
 #temp {

@@ -6,6 +6,7 @@ import Sorting from "./Sorting/Sorting.tsx";
 import StackDS from "./Stacks/StackDS.tsx";
 import QueueDS from "./Queue/QueueDS.tsx";
 import LCSDP from "./LCSDP/LCSDP.tsx";
+import Graph from "./Graphs/Graph.tsx";
 
 const Visualizer: FC = () => {
   const currDSAItem = useSelector((state: AppState) => state.dsa_item?.name);
@@ -30,6 +31,18 @@ const Visualizer: FC = () => {
     return (
       <LCSDP />
     )
+  } else if (
+    currDSAItem === "bfs-graphs" ||
+    currDSAItem === "dfs-graphs" ||
+    currDSAItem === "topological-sort-graphs" ||
+    currDSAItem === "kruskals-algorithm-graphs" ||
+    currDSAItem === "prims-algorithm-graphs" ||
+    currDSAItem === "bellman-ford-algorithm-graphs" ||
+    currDSAItem === "floyd-warshall-algorithm-graphs"
+  ) {
+    return (
+      <Graph />
+    );
   }
 };
 

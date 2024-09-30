@@ -1,0 +1,14 @@
+#algorithm-interface-container-graphs {
+    max-height: 100px;
+    min-height: 100px;
+    max-width: 500px;
+    min-width: 500px;
+    position: relative;
+    top: 200px;
+    left: 140px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}

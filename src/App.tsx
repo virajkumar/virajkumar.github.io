@@ -23,6 +23,7 @@ import { ENQUEUE_BOX_TYPE } from "./store/EnqueueBoxReducer.ts";
 import { DEQUEUE_BOX_TYPE } from "./store/DequeueBoxReducer.ts";
 import LCSDP from "./pages/Dsapage/Visualizer/LCSDP/LCSDP.tsx";
 import { LCSDP_TYPE } from "./store/LCSDPReducer.ts";
+import { GRAPH_TYPE } from "./store/GraphReducer.ts";
 
 function App() {
   const dispatch = useDispatch();
@@ -117,6 +118,13 @@ function App() {
         lcsString: ""
       }
     });
+
+    dispatch({
+      type: GRAPH_TYPE,
+      payload: {
+        vertices: []
+      }
+    })
   }
 
   return (
