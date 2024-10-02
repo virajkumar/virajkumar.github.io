@@ -23,7 +23,6 @@ const AlgorithmMenu: FC = () => {
       <select
         name="algorithms"
         id="algorithms"
-        defaultValue="insertion-sort"
         onChange={handleChange}
       >
         <option value="insertion-sort">Insertion Sort</option>
@@ -40,9 +39,6 @@ const AlgorithmMenu: FC = () => {
         </option>
         <option value="bfs-graphs">Breadth First Search (Graphs)</option>
         <option value="dfs-graphs">Depth First Search (Graphs)</option>
-        <option value="topological-sort-graphs">
-          Topological Sort (Graphs)
-        </option>
         <option value="kruskals-algorithm-graphs">Kruskal's Algorithm (Graphs)</option>
         <option value="prims-algorithm-graphs">Prim's Algorithm (Graphs)</option>
         <option value="bellman-ford-algorithm-graphs">

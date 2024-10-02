@@ -122,7 +122,9 @@ function App() {
     dispatch({
       type: GRAPH_TYPE,
       payload: {
-        vertices: []
+        vertices: [],
+        edged: [],
+        processed: false
       }
     })
   }
