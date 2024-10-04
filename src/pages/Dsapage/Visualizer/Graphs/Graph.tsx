@@ -15,7 +15,7 @@ const Graph: FC = () => {
         const yScale = scaleLinear().domain([0, 100]).range([0, 600]);
 
         const allCircles: React.JSX.Element[] = vertices.map((d, i) => {
-            return <circle key={i} cx={xScale(d.x)} cy={yScale(d.y)} r={d.radius} stroke={d.color} />
+            return <circle key={i} cx={xScale(d.x)} cy={yScale(d.y)} r={d.radius} fill={d.color} />
         });
 
         const allEdges: React.JSX.Element[] = edges.map((d, i) => {

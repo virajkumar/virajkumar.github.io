@@ -12,6 +12,9 @@ const findAdjVertices = async (edges: Edges[], currVertex: Vertices): Promise<Ed
         if (edges[i].p1.x === currVertex.x && edges[i].p1.y === currVertex.y) {
             adjVertices.push({ edgeID: i, adjVertex: edges[i].p2 });
         }
+        if (edges[i].p2.x === currVertex.x && edges[i].p2.y === currVertex.y) {
+            adjVertices.push({ edgeID: i, adjVertex: edges[i].p1 });
+        }
     }
     return await new Promise((resolve, reject) => {
         resolve(adjVertices);
@@ -37,7 +40,7 @@ const bfs = async (dsaItem: string | undefined, callDispatch: (action: AnyAction
                 adjV.adjVertex.color = "red";
                 adjV.adjVertex.radius = 6;
                 edges[adjV.edgeID].color = "red";
-                edges[adjV.edgeID].width = 2;
+                edges[adjV.edgeID].width = 4;
                 queue.push(adjV.adjVertex);
             }
 
@@ -46,15 +49,53 @@ const bfs = async (dsaItem: string | undefined, callDispatch: (action: AnyAction
                     type: GRAPH_TYPE,
                     payload: { ...graph }
                 });
-            }, 20);
+            }, 5);
             await new Promise((resolve) => setTimeout(resolve, 20));
         }
     }
 }
 
-const dfs = (dsaItem: string | undefined, callDispatch: (action: AnyAction) => void, graph: Graph) => {
+const dfsVisit = async (callDispatch: (action: AnyAction) => void, graph: Graph, vertex: Vertices) => {
+    const edges = graph.edges;
+    const vertices = graph.vertices;
+    vertex.color = "red";
+    vertex.radius = 6;
 
+    setTimeout(() => {
+        callDispatch({
+            type: GRAPH_TYPE,
+            payload: { ...graph }
+        });
+    }, 20);
+    await new Promise((resolve) => setTimeout(resolve, 20));
+
+    let adjVertices: EdgeAndVertex[] = await findAdjVertices(edges, vertex);
+    for (const adjV of adjVertices) {
+        if (adjV.adjVertex.color != "red" && edges[adjV.edgeID].color != "red") {
+            edges[adjV.edgeID].color = "red";
+            edges[adjV.edgeID].width = 4;
+
+            setTimeout(() => {
+                callDispatch({
+                    type: GRAPH_TYPE,
+                    payload: { ...graph }
+                });
+            }, 20);
+            await new Promise((resolve) => setTimeout(resolve, 20));
+
+            await dfsVisit(callDispatch, graph, adjV.adjVertex);
+        }
+    }
 }
+
+const dfs = async (dsaItem: string | undefined, callDispatch: (action: AnyAction) => void, graph: Graph) => {
+    for (const vertex of graph.vertices) {
+        if (vertex.color != "red") {
+            await dfsVisit(callDispatch, graph, vertex);
+        }
+    }
+}
+
 const kruskal = (dsaItem: string | undefined, callDispatch: (action: AnyAction) => void, graph: Graph) => {
 
 }
