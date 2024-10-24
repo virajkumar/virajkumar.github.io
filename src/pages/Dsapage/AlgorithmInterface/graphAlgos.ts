@@ -119,11 +119,12 @@ const findSet = async (trees: TreeSet[], vertex: Vertices): Promise<number> => {
     });
 }
 
-const unionSet = async (trees: TreeSet[], vertexU: Vertices, vertexV: Vertices, edge: Edges) => {
+const unionSet = async (callDispatch: (action: AnyAction) => void, trees: TreeSet[], vertexU: Vertices, vertexV: Vertices, edge: Edges, graph: Graph) => {
     let newTreeSet: TreeSet;
     let newVertices: Vertices[] = [];
     let newEdges: Edges[] = [];
     let bigBreak: boolean = false;
+    let index: number;
 
     for (let i = 0; i < trees.length; i++) {
         if (trees[i].vertices.includes(vertexU)) {
@@ -135,6 +136,19 @@ const unionSet = async (trees: TreeSet[], vertexU: Vertices, vertexV: Vertices, 
                     newEdges.push(edge)
                     newEdges = newEdges.concat(trees[j].edges);
                     newTreeSet = { id: i, vertices: newVertices, edges: newEdges };
+
+                    index = graph.edges.indexOf(edge);
+                    graph.edges[index].p1.color = "red";
+                    graph.edges[index].p2.color = "red";
+                    graph.edges[index].color = "red";
+                    graph.edges[index].width = 4;
+                    setTimeout(() => {
+                        callDispatch({
+                            type: GRAPH_TYPE,
+                            payload: { ...graph }
+                        });
+                    }, 20);
+                    await new Promise((resolve) => setTimeout(resolve, 20));
 
                     for (let o = 0; o < trees.length; o++) {
                         if (trees[o].id == newTreeSet.id) {
@@ -190,7 +204,7 @@ const kruskal = async (dsaItem: string | undefined, callDispatch: (action: AnyAc
     for (const vertex of graph.vertices) {
         trees.push({ id: i, vertices: [vertex], edges: [] })
         i += 1;
-        vertex.color = "red";
+        //vertex.color = "red";
     }
 
     setTimeout(() => {
@@ -203,9 +217,9 @@ const kruskal = async (dsaItem: string | undefined, callDispatch: (action: AnyAc
 
     let sortedEdges: Edges[] = [...graph.edges];
     sortedEdges.sort((a, b) => {
-        if (a.width < b.width) {
+        if (a.length < b.length) {
             return -1;
-        } else if (a.width > b.width) {
+        } else if (a.length > b.length) {
             return 1;
         } else {
             return 0;
@@ -213,12 +227,16 @@ const kruskal = async (dsaItem: string | undefined, callDispatch: (action: AnyAc
     })
 
     sortedEdges = sortedEdges.reverse();
+    let id1: number;
+    let id2: number;
 
     for (let i = 0; i < sortedEdges.length; i++) {
-        if (await findSet(trees, sortedEdges[i].p1) !== await findSet(trees, sortedEdges[i].p2)) {
+        id1 = await findSet(trees, sortedEdges[i].p1);
+        id2 = await findSet(trees, sortedEdges[i].p2);
+        if (id1 !== id2) {
             mst.push(sortedEdges[i]);
-            await unionSet(trees, sortedEdges[i].p1, sortedEdges[i].p2, sortedEdges[i]);
-            await visualizeForest(callDispatch, graph, trees);
+            await unionSet(callDispatch, trees, sortedEdges[i].p1, sortedEdges[i].p2, sortedEdges[i], graph);
+            //await visualizeForest(callDispatch, graph, trees);
         }
     }
 }
@@ -336,10 +354,8 @@ const prims = async (callDispatch: (action: AnyAction) => void, graph: Graph) =>
     let r: Queue = { vertex: graph.vertices[0], key: 0 };
     let Q: Queue[] = [];
 
-    for (const vertex of graph.vertices) {
-        if (vertex !== r.vertex) {
-            await minHeapInsert(Q, { vertex: vertex, key: Number.MAX_VALUE });
-        }
+    for (const vertex of graph.vertices.slice(1, graph.vertices.length)) {
+        await minHeapInsert(Q, { vertex: vertex, key: Number.MAX_VALUE });
     }
     await minHeapInsert(Q, r);
 

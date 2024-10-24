@@ -12,6 +12,7 @@ export interface Edges {
     p2: Vertices;
     color: string;
     width: number;
+    length: number;
 }
 
 export interface Graph {

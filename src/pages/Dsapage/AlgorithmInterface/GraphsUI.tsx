@@ -46,7 +46,7 @@ const GraphsUI: FC = () => {
         const edges = [
             ...Array.from(hull, (i, k) => [i, hull[(k + 1) % hull.length]]),
             ...Array.from(halfedges, (i: number, j) => i > j ? [[triangles[i], triangles[j]]] : []).flat()
-        ].map(([i, j]) => ({ p1: vertices[i], p2: vertices[j], color: "grey", width: 1 }));
+        ].map(([i, j]) => ({ p1: vertices[i], p2: vertices[j], color: "grey", width: 1, length: Math.sqrt((vertices[i].x - vertices[j].x) ** 2 + (vertices[i].y - vertices[j].y) ** 2) }));
 
         if (currGraphRef.current) {
             currGraphRef.current.edges = edges;
