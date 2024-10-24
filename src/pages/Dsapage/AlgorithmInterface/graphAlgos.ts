@@ -226,7 +226,7 @@ const kruskal = async (dsaItem: string | undefined, callDispatch: (action: AnyAc
         }
     })
 
-    sortedEdges = sortedEdges.reverse();
+    //sortedEdges = sortedEdges.reverse();
     let id1: number;
     let id2: number;
 
