@@ -1,6 +1,7 @@
 export const GRAPH_TYPE = "GRAPH_TYPE";
 
 export interface Vertices {
+    id: number;
     x: number;
     y: number;
     color: string;

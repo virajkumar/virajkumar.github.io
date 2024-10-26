@@ -271,13 +271,13 @@ const minHeapify = async (Q: Queue[], i: number) => {
         let tempQ: Queue = Q[i];
         Q[i] = Q[smallest];
         Q[smallest] = tempQ;
-        await minHeapify(Q, smallest)
+        await minHeapify(Q, smallest);
     }
 }
 
 const minHeapMinimum = async (Q: Queue[]): Promise<Queue> => {
     if (Q.length < 1) {
-        console.log("error");
+        console.log("error1");
     }
 
     return await new Promise((resolve, reject) => {
@@ -286,21 +286,22 @@ const minHeapMinimum = async (Q: Queue[]): Promise<Queue> => {
 }
 
 const minHeapExtractMin = async (Q: Queue[]): Promise<Queue> => {
-    const min = minHeapMinimum(Q);
+    const min = await minHeapMinimum(Q);
     Q[0] = Q[Q.length - 1];
-    await minHeapify(Q, 0);
+    Q.splice(Q.length - 1, 1);
+    await minHeapify(Q, Number.MAX_VALUE);
 
     return await new Promise((resolve, reject) => {
         resolve(min);
     });
 }
 
-const minHeapDecreaseKey = async (Q: Queue[], x: Queue, edgeWeight: number) => {
-    if (edgeWeight < x.key) {
-        console.log("error")
+const minHeapDecreaseKey = async (Q: Queue[], x: Queue, edgeLength: number) => {
+    if (edgeLength > x.key) {
+        console.log("error2");
     }
-    x.key = edgeWeight;
-    let i = Q.indexOf(x);
+    x.key = edgeLength;
+    let i: number = Q.map(function (q: Queue) { return q.vertex.id }).indexOf(x.vertex.id);
     let tempQ: Queue;
     let p: number = Math.floor(i / 2);
 
@@ -320,16 +321,16 @@ const minHeapInsert = async (Q: Queue[], x: Queue) => {
     await minHeapDecreaseKey(Q, x, k);
 }
 
-const edgeWidth = async (u: Vertices, v: Vertices, graph: Graph): Promise<number> => {
+const getEdge = async (u: Vertices, v: Vertices, graph: Graph): Promise<Edges> => {
     for (const edge of graph.edges) {
-        if ((u === edge.p1 && v === edge.p2) || (u === edge.p2 && v === edge.p1)) {
+        if ((u.id == edge.p1.id && v.id == edge.p2.id) || (u.id == edge.p2.id && v.id == edge.p1.id)) {
             return await new Promise((resolve, reject) => {
-                resolve(edge.width);
+                resolve(edge);
             })
         }
     }
     return await new Promise((resolve, reject) => {
-        resolve(0);
+        resolve({ p1: { id: 0, x: 0, y: 0, color: "black", radius: 4 }, p2: { id: 0, x: 0, y: 0, color: "black", radius: 4 }, color: "black", width: 4, length: 0 });
     })
 }
 
@@ -347,23 +348,50 @@ const QVertex = async (Q: Queue[], vertex: Vertices, key: number): Promise<numbe
     });
 }
 
+const findAdjVerticesQ = async (Q: Queue[], u: Queue, graph: Graph, usedVerticesID: number[]): Promise<Queue[]> => {
+    const adjQ: Queue[] = [];
+    let indexV: number;
+    let QMap: number[];
+    let edgeVertexID: number;
+
+    for (const edge of graph.edges) {
+        if (edge.p1.x === u.vertex.x && edge.p1.y === u.vertex.y && !usedVerticesID.includes(edge.p2.id)) {
+            indexV = Q.map(function (q: Queue) { return q.vertex.id }).indexOf(edge.p2.id);
+            QMap = Q.map(function (q: Queue) { return q.vertex.id });
+            edgeVertexID = edge.p2.id;
+            adjQ.push(Q[Q.map(function (q: Queue) { return q.vertex.id }).indexOf(edge.p2.id)]);
+        } else if (edge.p2.x === u.vertex.x && edge.p2.y === u.vertex.y && !usedVerticesID.includes(edge.p1.id)) {
+            indexV = Q.map(function (q: Queue) { return q.vertex.id }).indexOf(edge.p1.id);
+            QMap = Q.map(function (q: Queue) { return q.vertex.id });
+            edgeVertexID = edge.p1.id;
+            adjQ.push(Q[Q.map(function (q: Queue) { return q.vertex.id }).indexOf(edge.p1.id)]);
+        }
+    }
+
+    return await new Promise((resolve, reject) => {
+        resolve(adjQ);
+    })
+}
+
 /* To implement prims algorithm, we are using a min-priority queue which in turn uses a heap. CLRS has a section on priority queues in the heapsort section. 
    Mention it.
 */
 const prims = async (callDispatch: (action: AnyAction) => void, graph: Graph) => {
-    let r: Queue = { vertex: graph.vertices[0], key: 0 };
     let Q: Queue[] = [];
+    let r: Queue = { vertex: graph.vertices[0], key: 0 };
 
-    for (const vertex of graph.vertices.slice(1, graph.vertices.length)) {
-        await minHeapInsert(Q, { vertex: vertex, key: Number.MAX_VALUE });
-    }
     await minHeapInsert(Q, r);
 
+    for (const vertex of graph.vertices.slice(1, graph.vertices.length)) {
+        await minHeapInsert(Q, { vertex: vertex, key: 0 });
+    }
+
     let u: Queue;
-    let adjVertices: EdgeAndVertex[];
+    let adjVerticesQ: Queue[];
     let verticesQ: Vertices[] = [];
-    let currEdgeWidth: number;
+    let currEdge: Edges;
     let qVertexIndex: number;
+    let usedVerticesID: number[] = [];
     while (Q.length > 0) {
         u = await minHeapExtractMin(Q);
         u.vertex.color = "red";
@@ -376,15 +404,17 @@ const prims = async (callDispatch: (action: AnyAction) => void, graph: Graph) =>
         }, 20);
         await new Promise((resolve) => setTimeout(resolve, 20));
 
-        adjVertices = await findAdjVertices(graph.edges, u.vertex);
-        for (let i = 0; i < adjVertices.length; i++) {
+        adjVerticesQ = await findAdjVerticesQ(Q, u, graph, usedVerticesID);
+        for (let i = 0; i < adjVerticesQ.length; i++) {
             for (let j = 0; j < Q.length; j++) {
                 verticesQ.push(Q[j].vertex);
             }
-            currEdgeWidth = await edgeWidth(u.vertex, adjVertices[i].adjVertex, graph);
-            if (verticesQ.includes(adjVertices[i].adjVertex) && currEdgeWidth <= graph.edges[adjVertices[i].edgeID].width) {
-                graph.edges[adjVertices[i].edgeID].color = "red";
-                graph.edges[adjVertices[i].edgeID].width = 4;
+            currEdge = await getEdge(u.vertex, adjVerticesQ[i].vertex, graph);
+            if (verticesQ.map(function (v: Vertices) { return v.id }).includes(adjVerticesQ[i].vertex.id) && currEdge.length <= adjVerticesQ[i].key) {
+                adjVerticesQ[i].vertex.color = "red";
+                currEdge.color = "red";
+                currEdge.width = 4;
+                usedVerticesID.push(u.vertex.id);
 
                 setTimeout(() => {
                     callDispatch({
@@ -394,8 +424,8 @@ const prims = async (callDispatch: (action: AnyAction) => void, graph: Graph) =>
                 }, 20);
                 await new Promise((resolve) => setTimeout(resolve, 20));
 
-                qVertexIndex = await QVertex(Q, adjVertices[i].adjVertex, currEdgeWidth);
-                await minHeapDecreaseKey(Q, Q[qVertexIndex], currEdgeWidth);
+                //qVertexIndex = await QVertex(Q, adjVerticesQ[i].vertex, currEdge.length);
+                await minHeapDecreaseKey(Q, adjVerticesQ[i], currEdge.length);
             }
         }
     }
@@ -419,15 +449,6 @@ const graphAlgos = (dsaItem: string | undefined, callDispatch: (action: AnyActio
                 break;
             case "kruskals-algorithm-graphs":
                 kruskal(dsaItem, callDispatch, graph);
-                break;
-            case "prims-algorithm-graphs":
-                prims(callDispatch, graph);
-                break;
-            case "bellman-ford-algorithm-graphs":
-                bellmanFord(dsaItem, callDispatch, graph);
-                break;
-            case "floyd-warshall-algorithm-graphs":
-                floydWarshall(dsaItem, callDispatch, graph);
                 break;
         }
     }

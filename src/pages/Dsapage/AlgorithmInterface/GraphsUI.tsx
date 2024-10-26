@@ -23,12 +23,13 @@ const GraphsUI: FC = () => {
         const vertices: Vertices[] = [];
 
         for (let i = 0; i < numPoints; i++) {
+            const id = i;
             const x = Math.random() * 100;  // You can change the range of coordinates as needed
             const y = Math.random() * 100;
             const color = "black";
             const radius = 4;
 
-            vertices.push({ x, y, color, radius });
+            vertices.push({ id, x, y, color, radius });
         }
         if (currGraphRef.current) {
             currGraphRef.current.vertices = vertices;

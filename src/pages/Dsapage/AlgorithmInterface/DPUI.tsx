@@ -35,7 +35,7 @@ const DPUI: FC = () => {
 
     const handleGenStringY = (event) => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const length = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
+        const length = Math.floor(Math.random() * (18 - 9 + 1)) + 9;
         let randStringY = "";
 
         for (let i = 0; i < length; i++) {
@@ -45,6 +45,7 @@ const DPUI: FC = () => {
 
         if (currLCSDPRef.current) {
             currLCSDPRef.current.stringY = randStringY;
+            currLCSDPRef.current.processed = false;
         }
         dispatch({
             type: LCSDP_TYPE,

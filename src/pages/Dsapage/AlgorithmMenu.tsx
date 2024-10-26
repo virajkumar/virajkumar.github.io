@@ -34,19 +34,9 @@ const AlgorithmMenu: FC = () => {
         <option value="longest-common-subsequence-dp">
           Longest Common Subsequence (Dynamic Programming)
         </option>
-        <option value="huffman-code-ga">
-          Huffman Code (Greedy Algorithms)
-        </option>
         <option value="bfs-graphs">Breadth First Search (Graphs)</option>
         <option value="dfs-graphs">Depth First Search (Graphs)</option>
-        <option value="kruskals-algorithm-graphs">Kruskal's Algorithm (Graphs)</option>
-        <option value="prims-algorithm-graphs">Prim's Algorithm (Graphs)</option>
-        <option value="bellman-ford-algorithm-graphs">
-          Bellman Ford Algorithm (Graphs)
-        </option>
-        <option value="floyd-warshall-algorithm-graphs">
-          Floyd Warshall Algorithm (Graphs)
-        </option>
+        <option value="kruskals-algorithm-graphs">Kruskal's Algorithm - Minimum Spanning Tree (Graphs)</option>
       </select>
     </div>
   );

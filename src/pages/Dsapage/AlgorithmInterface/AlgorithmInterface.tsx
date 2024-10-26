@@ -34,11 +34,7 @@ const AlgorithmInterface: FC = () => {
   } else if (
     currDSAItem === "bfs-graphs" ||
     currDSAItem === "dfs-graphs" ||
-    currDSAItem === "topological-sort-graphs" ||
-    currDSAItem === "kruskals-algorithm-graphs" ||
-    currDSAItem === "prims-algorithm-graphs" ||
-    currDSAItem === "bellman-ford-algorithm-graphs" ||
-    currDSAItem === "floyd-warshall-algorithm-graphs"
+    currDSAItem === "kruskals-algorithm-graphs"
   ) {
     return (
       <GraphsUI />

@@ -63,16 +63,18 @@ const SortingUI: FC = () => {
     };
 
     return (
-        <div id="algorithm-interface-container">
-            <div id="algorithm-interface-box">
-                <div id="play-button" onClick={handleClickPlay}>
+        <div id="algorithm-interface-container-sorting">
+            <form id="algorithm-interface-form-sorting">
+                <label id="play">Start sorting algorithm</label>
+                <button id="play-button" type="button" onClick={handleClickPlay}>
                     Play
-                </div>
-                <div id="reset-button" onClick={handleClickReset}>
+                </button>
+                <br />
+                <label id="reset">Reset sorting algorithm</label>
+                <button id="reset-button" type="button" onClick={handleClickReset}>
                     Reset
-                </div>
-            </div>
-            <div id="label">{currDSAItem}</div>
+                </button>
+            </form>
         </div>
     );
 };
