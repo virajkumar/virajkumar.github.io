@@ -21,7 +21,7 @@ const NavBar: FC = () => {
         <div id="dsa" className="bar-element">
           <DsaButton />
         </div>
-        <div id="projects" className="bar-element">
+        {/* <div id="projects" className="bar-element">
           <ProjectsButton />
         </div>
         <div id="blog" className="bar-element">
@@ -32,7 +32,7 @@ const NavBar: FC = () => {
         </div>
         <div id="tutor-service" className="bar-element">
           <TutorServiceButton />
-        </div>
+        </div> */}
       </div>
     </div>
   );

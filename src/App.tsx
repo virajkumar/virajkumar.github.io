@@ -24,6 +24,7 @@ import { DEQUEUE_BOX_TYPE } from "./store/DequeueBoxReducer.ts";
 import LCSDP from "./pages/Dsapage/Visualizer/LCSDP/LCSDP.tsx";
 import { LCSDP_TYPE } from "./store/LCSDPReducer.ts";
 import { GRAPH_TYPE } from "./store/GraphReducer.ts";
+import Helmet from 'react-helmet';
 
 function App() {
   const dispatch = useDispatch();
@@ -131,6 +132,9 @@ function App() {
 
   return (
     <div id="temp">
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/dsa" element={<Dsapage />}></Route>

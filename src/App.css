@@ -5,6 +5,5 @@
 }
 
 #temp {
-  display: flex;
-  flex: 1;
+  display: grid;
 }

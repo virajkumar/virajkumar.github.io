@@ -8,7 +8,9 @@ import Footer from "./Footer.tsx";
 const Home: FC = () => {
   return (
     <div id="home-container">
-      <NavBar />
+      <div id="nav-container">
+        <NavBar />
+      </div>
       <div id="description-resume-container">
         <Description />
         <Resume />

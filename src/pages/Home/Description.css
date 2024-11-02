@@ -1,13 +1,10 @@
 #para-container {
-    text-align: left;
     display: flex;
-    flex: 2;
-    width: 1440px;
-    flex-direction: row;
     align-items: center;
 }
 
 #paragraph {
+    display: flex;
     font-size: 30px;
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

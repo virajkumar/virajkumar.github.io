@@ -15,7 +15,7 @@ const DPUI: FC = () => {
 
     const handleGenStringX = (event) => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const length = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
+        const length = Math.floor(Math.random() * (18 - 9 + 1)) + 9;
         let randStringX = "";
 
         for (let i = 0; i < length; i++) {

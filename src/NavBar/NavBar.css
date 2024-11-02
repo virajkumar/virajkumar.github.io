@@ -6,19 +6,14 @@
     right: 0px;
     top: 0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: flex;
     padding: 10px 10px 10px 10px;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
     flex: 1;
     z-index: 2;
-}
-
-#logo{
-    width: 50px;
-    flex: 1;
 }
 
 .bar-element {
